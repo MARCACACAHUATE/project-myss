@@ -13,18 +13,18 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(_("El usuario debe tener un numero de empleado"))
 
         if extra_fields.get("is_superuser"):
-            role = Role.objects.get_or_create(nombre_role="Admin")
+            role, created = Role.objects.get_or_create(nombre_role="Admin")
         else:
-            role = Role.objects.get_or_create(nombre_role="Analista")
+            role, created = Role.objects.get_or_create(nombre_role="Analista")
 
         user = self.model(numero_empleado=num_empleado,
-                          nombre=nombre, **extra_fields)
+                          nombre=nombre)
         user.set_password(password)
-        user.role = role
+        user.role_id = role
         user.save()
         return user
 
-    def create_superuser(self, num_empleado, nombre, password, **extra_fields):
+    def create_superuser(self, numero_empleado, nombre, password, **extra_fields):
         """
         Crea un SuperUsuario con el nombre, numero de empleado y password.
         """
@@ -36,4 +36,4 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(_("Superuser must have is_staff=True."))
         if extra_fields.get("is_superuser") is not True:
             raise ValueError(_("Superuser must have is_superuser=True."))
-        return self.create_user(num_empleado, nombre, password, **extra_fields)
+        return self.create_user(numero_empleado, nombre, password, **extra_fields)
