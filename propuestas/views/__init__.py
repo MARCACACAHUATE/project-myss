@@ -1,1 +1,2 @@
 from .revision_documentos import RevisionDocumentosView
+from .propuestas_detalles import PropuestasDetallesView

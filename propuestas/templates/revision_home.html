@@ -2,36 +2,44 @@
 
 {% block main %}
 <div>
-    <h2 class="text-2xl text-center">En Fecha</h2>
+    <h2 class="font-medium text-4xl text-center my-6">Propuestas</h2>
+    <div class="flex justify-end my-5">
+        <input 
+            class="rounded-full h-7"
+            placeholder="Búsqueda"
+            type="text"/>
+    </div>
+
+    <div class="overflow-auto max-h-[600px]">
     <table class="w-full caption-bottom text-sm">
         <thead class="[&amp;_tr]:border-b">
             <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
                 <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-                    Matricula
+                    No. Empleado
                 </th>
                 <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
                     Nombre
                 </th>
                 <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-                    Fecha de recepcion
+                    Fecha de Recepción
                 </th>
                 <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-                    Telefono
+                    Teléfono
                 </th>
                 <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-                    Empresa
+                    Torre la que pertenece
                 </th>
                 <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-                    RFC
+                    Area
                 </th>
                 <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-                    Ver mas detalles
+                    Ver más detalles
                 </th>
             </tr>
         </thead>
         <tbody class="[&amp;_tr:last-child]:border-0">
             {% for propuesta in lista_propuestas %}
-            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted hover:bg-gray-100">
                 <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                     {{propuesta.no_empleado}}
                 </td>
@@ -39,7 +47,7 @@
                     {{propuesta.nombre}}
                 </td>
                 <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-                    Falta agregar
+                    {{ propuesta.fecha_creacion }}
                 </td>
                 <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                     {{propuesta.telefono}}
@@ -51,11 +59,14 @@
                     No Hay
                 </td>
                 <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-                    Detalles
+                    <a href="{% url 'propuestas:pro_detalles' propuesta_id=propuesta.id %}">
+                        <p class="underline cursor-pointer">Detalles</p>
+                    </a>
                 </td>
             </tr>
             {% endfor %}
         </tbody>
     </table> 
+    </div>
 </div>
 {% endblock %}
