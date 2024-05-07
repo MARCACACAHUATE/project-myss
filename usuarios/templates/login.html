@@ -1,52 +1,33 @@
-{% load static %}
-{% load static tailwind_tags %}
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <title>Inicoo de Sesión</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
-        {% tailwind_css %}
-    </head>
-    <body>
-        {% block main %}
+{% extends 'base.html' %} 
 
-        <article class="bg-gradient-to-r from-green-50 to-green-50 col-span-2 h-full text-center">
+{% block main %}
+<article class="bg-gradient-to-r from-green-50 to-green-50 col-span-2 h-full text-center">
 
-            <h1 class="text-verde font-bold  text-titulo-min-xl
-                      sm:mt-32 sm:text-titulo-xl">Iniciar Sesión</h1>
+    <h1 class="text-2xl text-center">
+        Iniciar Sesión</h1>       
+        <!--{% if mensaje %}
+        <p>{{ mensaje }}</p>
+        {% endif %}-->
       
-            
-              <!--{% if mensaje %}
-              <p>{{ mensaje }}</p>
-              {% endif %}-->
-      
-              <form action="" method="post" class="bg-white mx-7 mt-2 rounded-lg p-6 shadow-2xl shadow-gray-600 sm:w-96 sm:mx-auto">
-                  {% csrf_token %} 
-                
+        <form action="" method="post" class="bg-white mx-7 mt-2 rounded-lg p-6 shadow-2xl shadow-gray-600 sm:w-96 sm:mx-auto">
+        {% csrf_token %} 
+            <br>
+            <input name="numero_empleado" id="numero_empleado" 
+                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                    type="text" placeholder="Número Empleado"><br>
+            <div class="relative">
+                <input name="password" id="password" 
+                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                        type="password" placeholder="Contraseña">
+                        <!--<a href="#"><p class="text-gray-400 underline mt-2 sm:absolute sm:left-0 ">¿Olvidasta tu contraseña?</p></a>-->
+            </div>
+            <input class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                    type="submit" value="Entrar"><br>
+        <!--<a href="{% url 'Registro' %}"><p class="font-bold underline mt-4">Regístrate Aquí</p></a>-->              
+    </form>
+</article>
+{% endblock%}
 
-                  <br>
-                  <input name="numero_empleado" id="numero_empleado" class="border border-gray-300 w-full px-3 py-2 mb-4 rounded-md bg-gray-100" type="text" placeholder="Número Empleado">
-                  <br>
-                  <div class="relative">
-                  <input name="password" id="password" class="border border-gray-300 w-full px-3 py-2 mb-0 rounded-md bg-gray-100" type="password" placeholder="Contraseña">
-                  <!--<a href="#"><p class="text-gray-400 underline mt-2
-                                          sm:absolute sm:left-0 ">¿Olvidasta tu contraseña?</p></a>-->
-                  </div>
-                  <input class="bg-verde w-full py-2 text-white rounded-full cursor-pointer hover:bg-green-300 mt-4
-                              sm:mt-14" type="submit" value="Entrar">
-                  <br>
-                  <!--<a href="{% url 'Registro' %}"><p class="font-bold underline mt-4">Regístrate Aquí</p></a>-->
-              
-              </form>
-          </article>
-
-
-
-        {% endblock%}
-    </body>
-</html>
 
 
 
