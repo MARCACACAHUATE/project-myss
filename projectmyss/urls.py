@@ -23,10 +23,11 @@ from usuarios import views
 def test_home(request):
     return render(request, "base.html")
 
-
+ 
 urlpatterns = [
-    path('login/', views.login_user, name="login"),
-    path('logout/', views.logout_user, name="logout"),
+    path('login/', views.LoginView.login_user, name="login"),
+    path('login/', views.LoginView.login_user, name="login"),
+    path('logout/', views.LoginView.logout_user, name="logout"),
     path("propuestas/", include("propuestas.urls", namespace="propuestas")),
     path('admin/', admin.site.urls),
     path('usuarios/', include("usuarios.urls", namespace="usuarios")),
