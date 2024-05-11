@@ -1,114 +1,133 @@
-{% extends 'base.html' %} 
-
-{% block main %}
-<!--<div class="flex justify-center">-->
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Arriba las chivas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% tailwind_css %}
+    </head>
+    <body class="bg-slate-200 h-screen w-screen relative">
+        <nav class="h-20 w-full relative bg-red-500 shadow-2xl">
+                <div class="absolute left-10 top-6 w-3/4 flex justify-evenly">
+                        <h1 class="font-mono text-2xl absolute left-20 top-0">FORMULARIO PROPUESTAS</h1>
+                </div>
+          
+        </nav>
+        <!--<div class="flex justify-center">-->
     
-<div class="mx-7 mt-2 h-3/4 p-6 justify-items-center grid-cols-2 
+        <div class="mx-7 mt-2 h-3/4 p-6 justify-items-center grid-cols-2 
         sm:w-1/2 sm:mx-auto sm:grid-cols-1">     
       
             
-    <!--{{form.as_p}}--> 
-        <form action="" method="POST" id="myForm" class="w-full max-w-3xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        {% csrf_token %} 
-                <h2 class="text-2xl text-center">
-                        FORMULARIO PROPUESTAS
-                </h2><br>
-
-                <div class="mb-4">
-                        <label for="numero_empleado" class="block text-gray-700 text-sm font-bold mb-2">Número de Empleado</label>
-                        <input name="numero_empleado" id="numero_empleado"                         
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="number" placeholder="Número de Empleado" required>                        
-                </div>    <br>                            
-                        
-                <div class="mb-4">
-                        <label for="nombre_empleado" class="block text-gray-700 text-sm font-bold mb-2">Nombre de Empleado</label>
-                        <input name="nombre_empleado" id="nombre_empleado" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Nombre de Empleado" required>                        
-                </div><br>
-                                      
-                <!--<div class="mb-4">
-                        <label for="fecha_recepcion" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Recepcion</label>
-                        <input name="fecha_recepcion" id="fecha_recepcion" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="date" placeholder="Fecha de Recepcion" required>
-                </div>-->
-                        
-                <div class="mb-4">
-                        <label for="telefono_contacto" class="block text-gray-700 text-sm font-bold mb-2">Teléfono de Contacto</label>
-                        <input name="telefono_contacto" id="telefono_contacto" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="number" placeholder="Teléfono de Contacto" required>                        
-                </div><br>
-                        
-                <div class="mb-4">              
-                        <label for="torre" class="block text-gray-700 text-sm font-bold mb-2">Torre en la que Pertenece</label> 
-                        <input name="torre" id="torre" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Torre en la que Pertenece" required>                
-                </div><br>
-                        
-                <div class="mb-4">                
-                        <label for="area" class="block text-gray-700 text-sm font-bold mb-2">Área en la que Pertenece</label>
-                        <input name="area" id="area" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Área en la que Pertenece" required>                         
-                </div><br>
-                        
-                <div class="mb-4">
-                        <label for="puesto" class="block text-gray-700 text-sm font-bold mb-2">Puesto en la que Pertenece</label>
-                        <input name="puesto" id="puesto" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="text" placeholder="Puesto en la que Pertenece" required>                          
-                </div><br>
-                        
-                <div class="mb-4">
-                        <label for="numero_empleado_supervisor" class="block text-gray-700 text-sm font-bold mb-2">Número de Empleado Jefe Directo</label>
-                        <input name="numero_empleado_jefe_directo" id="numero_empleado_jefe_directo" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="number" placeholder="Número de Empleado Jefe Directo" required>                
-                </div><br>
-                        
-                <div class="mb-4">
-                        <label for="nombre_empleado_jefe_directo" class="block text-gray-700 text-sm font-bold mb-2">Nombre de Empleado Jefe Directo</label> 
-                        <input name="nombre_empleado_jefe_directo" id="nombre_empleado_jefe_directo" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"      
-                                type="text" placeholder="Nombre de Empleado Jefe Directo" required>                        
-                </div><br>
-                        
-                <div class="mb-4">
-                        <label for="correo_personal" class="block text-gray-700 text-sm font-bold mb-2">Correo Personal</label>   
-                        <input name="correo_personal" id="correo_personal" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3- text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="email" placeholder="Correo Personal" required>                        
-                </div><br>
+                <!--{{form.as_p}}--> 
+                <form action="" method="POST" id="myForm" class="relative max-w-3xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                {% csrf_token %} 
                 
-                <div class="mb-4">                            
-                        <label for="correo_institucional" class="block text-gray-700 text-sm font-bold mb-2">Correo Institucional</label>  
-                        <input name="correo_institucional" id="correo_institucional" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                type="email" placeholder="Correo Institucional" required>                          
-                </div><br>
+                        <div class="mb-4">
+                                <label for="numero_empleado" class="block text-gray-700 text-sm font-bold mb-2">Número de Empleado</label>
+                                <input name="numero_empleado" id="numero_empleado"                         
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="number" placeholder="Número de Empleado" required>                        
+                        </div>    <br>                            
                         
-                <div class="mb-4">
-                        <label for="documento" class="block text-gray-700 text-sm font-bold mb-2">Documento de Propuesta</label>
-                        <input name="documento" id="documento" 
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"      
-                                type="file" placeholder="Documento Propuesta" required>                        
-                </div><br>
+                        <div class="mb-4">
+                                <label for="nombre_empleado" class="block text-gray-700 text-sm font-bold mb-2">Nombre de Empleado</label>
+                                <input name="nombre_empleado" id="nombre_empleado" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text" placeholder="Nombre de Empleado" required>                        
+                        </div><br>
+                                      
+                        <!--<div class="mb-4">
+                                <label for="fecha_recepcion" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Recepcion</label>
+                                <input name="fecha_recepcion" id="fecha_recepcion" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="date" placeholder="Fecha de Recepcion" required>
+                        </div>-->
+                        
+                        <div class="mb-4">
+                                <label for="telefono_contacto" class="block text-gray-700 text-sm font-bold mb-2">Teléfono de Contacto</label>
+                                <input name="telefono_contacto" id="telefono_contacto" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="number" placeholder="Teléfono de Contacto" required>                        
+                        </div><br>
+                        
+                        <div class="mb-4">              
+                                <label for="torre" class="block text-gray-700 text-sm font-bold mb-2">Torre en la que Pertenece</label> 
+                                <input name="torre" id="torre" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text" placeholder="Torre en la que Pertenece" required>                
+                        </div><br>
+
+                        <div class="mb-4">                
+                                <label for="area" class="block text-gray-700 text-sm font-bold mb-2">Área en la que Pertenece</label>
+                                <input name="area" id="area" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text" placeholder="Área en la que Pertenece" required>                         
+                        </div><br>
+                        
+                        <div class="mb-4">
+                                <label for="puesto" class="block text-gray-700 text-sm font-bold mb-2">Puesto en la que Pertenece</label>
+                                <input name="puesto" id="puesto" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="text" placeholder="Puesto en la que Pertenece" required>                          
+                        </div><br>
+                        
+                        <div class="mb-4">
+                                <label for="numero_empleado_supervisor" class="block text-gray-700 text-sm font-bold mb-2">Número de Empleado Jefe Directo</label>
+                                <input name="numero_empleado_jefe_directo" id="numero_empleado_jefe_directo" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="number" placeholder="Número de Empleado Jefe Directo" required>                
+                        </div><br>
+                        
+                        <div class="mb-4">
+                                <label for="nombre_empleado_jefe_directo" class="block text-gray-700 text-sm font-bold mb-2">Nombre de Empleado Jefe Directo</label> 
+                                <input name="nombre_empleado_jefe_directo" id="nombre_empleado_jefe_directo" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"      
+                                        type="text" placeholder="Nombre de Empleado Jefe Directo" required>                        
+                        </div><br>
+                        
+                        <div class="mb-4">
+                                <label for="correo_personal" class="block text-gray-700 text-sm font-bold mb-2">Correo Personal</label>   
+                                <input name="correo_personal" id="correo_personal" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3- text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="email" placeholder="Correo Personal" required>                        
+                        </div><br>
+                
+                        <div class="mb-4">                            
+                                <label for="correo_institucional" class="block text-gray-700 text-sm font-bold mb-2">Correo Institucional</label>  
+                                <input name="correo_institucional" id="correo_institucional" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                        type="email" placeholder="Correo Institucional" required>                          
+                        </div><br>
+                        
+                        <div class="mb-4">
+                                <label for="documento" class="block text-gray-700 text-sm font-bold mb-2">Documento de Propuesta</label>
+                                <input name="documento" id="documento" 
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"      
+                                        type="file" placeholder="Documento Propuesta" required>                        
+                        </div><br>
                             
-                <div class="mb-4">                        
-                        <input name="consentimiento" id="consentimiento" 
-                                type="checkbox" required>
-                        <label for="consentimiento">Acepto los términos y condiciones</label>
-                </div>
-                <div class="flex justify-center">
+                        <div class="mb-4">                        
+                                <input name="consentimiento" id="consentimiento" 
+                                        type="checkbox" required>
+                                <label for="consentimiento">Acepto los términos y condiciones</label>
+                        </div>
+ 
+                        <div class="flex justify-center">
                         <button class="w-10/12 py-2 font-bold rounded-full cursor-pointer hover:bg-blue-300 mt-2"onclick="validatePassword()">
                                 Enviar Propuesta
                         </button><br>      
-                </div>
-        </form>
-</div>        
-{% endblock%}
+                        </div>
+                </form>
+        </div>  
+        <div class="relative left-0 bottom-0 h-20 w-full bg-slate-400">
+        <footer class="relative left-0 bottom-0 h-20 w-full bg-slate-400">
+                <p class="absolute right-6 bottom-6 font-mono text-slate-700">CENTRO DE CONTACTO BANORTE</p>
+                <p class="absolute right-6 bottom-2 font-mono text-slate-700">Version 1.0</p>
+        </footer>
+        </div>      
 
+    </body>
+</html>
