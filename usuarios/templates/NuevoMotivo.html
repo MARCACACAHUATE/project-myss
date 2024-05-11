@@ -1,0 +1,22 @@
+{% extends 'Plantilla.html' %}
+
+
+{% block main %}
+<div class="mx-auto my-4 text-center">
+    <h1>Contact Us</h1>
+</div>
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="tipo">Selecciona el tipo de motivo:</label>
+        <select id="tipo" name="tipo">
+            {% for asunto in lista_asuntos %}
+            <option value="{{asunto.id}}">{{asunto.Tipo}}</option>
+            {% endfor %}
+        </select>
+        <label for="motivo">Motivo:</label>
+        <input type="text" id="motivo" name="motivo" required><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+{% endblock %}

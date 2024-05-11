@@ -1,0 +1,15 @@
+{% extends 'Plantilla.html' %}
+
+{% block main %}
+<div class="mx-auto my-4 text-center">
+    <h1>Contact Us</h1>
+</div>
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="Tipo">Asunto:</label>
+        <input type="text" id="Tipo" name="Tipo" required><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+{% endblock %}

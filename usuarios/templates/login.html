@@ -1,37 +1,33 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% block main %}
 <article class="bg-gradient-to-r from-green-50 to-green-50 col-span-2 h-full text-center">
 
     <h1 class="text-2xl text-center">
-        Iniciar Sesión</h1>       
-        <!--{% if mensaje %}
+        Iniciar Sesión</h1>
+    <!--{% if mensaje %}
         <p>{{ mensaje }}</p>
         {% endif %}-->
-      
-        <form action="" method="post" class="w-full max-w-3xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        {% csrf_token %} 
-            <br>
-            <div class="mb-4">
-                <input name="numero_empleado" id="numero_empleado" 
-                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
-                        type="text" placeholder="Número Empleado"><br>
-            </div><br>
 
-            <div class="relative">
-                <input name="password" id="password" 
-                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
-                        type="password" placeholder="Contraseña">
-                        <!--<a href="#"><p class="text-gray-400 underline mt-2 sm:absolute sm:left-0 ">¿Olvidasta tu contraseña?</p></a>-->
-            </div>
-            <input class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
-                    type="submit" value="Entrar"><br>
-        
+    <form action="" method="post" class="w-full max-w-3xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        {% csrf_token %}
+        <br>
+        <div class="mb-4">
+            <input name="numero_empleado" id="numero_empleado"
+                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                type="text" placeholder="Número Empleado"><br>
+        </div><br>
+
+        <div class="relative">
+            <input name="password" id="password"
+                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                type="password" placeholder="Contraseña">
+            <!--<a href="#"><p class="text-gray-400 underline mt-2 sm:absolute sm:left-0 ">¿Olvidasta tu contraseña?</p></a>-->
+        </div>
+        <input
+            class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+            type="submit" value="Entrar"><br>
+
     </form>
 </article>
 {% endblock%}
-
-
-
-
-

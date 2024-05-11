@@ -1,0 +1,43 @@
+{% extends 'Plantilla.html' %}
+
+
+{% block main %}
+<div>
+    <h2 class="text-2xl text-center">En Fecha</h2>
+    <table class="w-full caption-bottom text-sm">
+        <thead class="[&amp;_tr]:border-b">
+            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                <th
+                    class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                    ID
+                </th>
+                <th
+                    class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                    Tipo
+                </th>
+                <th
+                    class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                    Tipo
+                </th>
+            </tr>
+        </thead>
+        <tbody class="[&amp;_tr:last-child]:border-0">
+            {% for motivo in lista_motivos %}
+            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                    {{motivo.id}}
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                    {{motivo.Asunto.Tipo}}
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                    {{motivo.Motivo}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="NuevoMotivo"><button>Nuevo Motivo</button></a>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'Plantilla.html' %}
+
+{% block main %}
+<div class="mx-auto my-4 text-center">
+    <h1>Contact Us</h1>
+</div>
+<div class="container">
+    <p>Plantilla Propuestas</p>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="tipo">Selecciona el tipo:</label>
+        <select id="tipo" name="tipo">
+            <option value="Aceptada">Propuesta Aceptada</option>
+            <option value="Rechazada">Propuesta Rechazada</option>
+        </select>
+        <br><br>
+        <label for="Asunto">Asunto:</label>
+        <input type="text" id="Asunto" name="Asunto" required><br><br>
+        <label for="Saludo">Saludo:</label><br>
+        <textarea id="Saludo" name="Saludo" rows="4" cols="50" required></textarea><br><br>
+        <label for="Firma">Firma:</label><br>
+        <textarea id="Firma" name="Firma" rows="4" cols="50" required></textarea><br><br>
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+{% endblock %}

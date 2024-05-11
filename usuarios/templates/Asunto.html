@@ -1,0 +1,35 @@
+{% extends 'Plantilla.html' %}
+
+{% block main %}
+<div>
+    <h2 class="text-2xl text-center">En Fecha</h2>
+    <table class="w-full caption-bottom text-sm">
+        <thead class="[&amp;_tr]:border-b">
+            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                <th
+                    class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                    ID
+                </th>
+                <th
+                    class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                    Tipo
+                </th>
+            </tr>
+        </thead>
+        <tbody class="[&amp;_tr:last-child]:border-0">
+            {% for asunto in lista_asuntos %}
+            <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                    {{asunto.id}}
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                    {{asunto.Tipo}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="NuevoAsunto"><button>Nuevo Asunto</button></a>
+
+{% endblock %}

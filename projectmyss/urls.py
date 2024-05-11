@@ -26,6 +26,7 @@ def test_home(request):
 urlpatterns = [
     path("propuestas/", include("propuestas.urls", namespace="propuestas")),
     path('admin/', admin.site.urls),
+    path('usuarios/', include("usuarios.urls", namespace="usuarios")),
     # tailwind routes
     path("__reload__/", include("django_browser_reload.urls")),
 ]

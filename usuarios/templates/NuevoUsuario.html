@@ -1,0 +1,22 @@
+{% extends 'Plantilla.html' %}
+
+
+{% block main %}
+<div class="mx-auto my-4 text-center">
+    <h1>Registrar usuario</h1>
+</div>
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="Nombre">Nombre:</label>
+        <input type="text" id="Nombre" name="Nombre" required><br><br>
+        <label for="Numero">Numero de empleado:</label>
+        <input type="text" id="Numero" name="Numero" required>
+        <label for="Contraseña">Contraseña:</label>
+        <input type="text" id="Contraseña" name="Contraseña" required>
+        <label for="Correo">Correo:</label>
+        <input type="text" id="Correo" name="Correo" required>
+        <input type="submit" value="Enviar">
+    </form>
+</div>
+{% endblock %}
