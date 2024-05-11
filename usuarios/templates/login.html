@@ -9,21 +9,24 @@
         <p>{{ mensaje }}</p>
         {% endif %}-->
       
-        <form action="" method="post" class="bg-white mx-7 mt-2 rounded-lg p-6 shadow-2xl shadow-gray-600 sm:w-96 sm:mx-auto">
+        <form action="" method="post" class="w-full max-w-3xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         {% csrf_token %} 
             <br>
-            <input name="numero_empleado" id="numero_empleado" 
-                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
-                    type="text" placeholder="Número Empleado"><br>
+            <div class="mb-4">
+                <input name="numero_empleado" id="numero_empleado" 
+                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                        type="text" placeholder="Número Empleado"><br>
+            </div><br>
+
             <div class="relative">
                 <input name="password" id="password" 
-                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
                         type="password" placeholder="Contraseña">
                         <!--<a href="#"><p class="text-gray-400 underline mt-2 sm:absolute sm:left-0 ">¿Olvidasta tu contraseña?</p></a>-->
             </div>
             <input class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
                     type="submit" value="Entrar"><br>
-        <!--<a href="{% url 'Registro' %}"><p class="font-bold underline mt-4">Regístrate Aquí</p></a>-->              
+        
     </form>
 </article>
 {% endblock%}

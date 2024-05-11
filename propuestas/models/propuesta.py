@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Propuesta(models.Model):
@@ -15,6 +16,7 @@ class Propuesta(models.Model):
     status = models.CharField(max_length=30)
     descripcion_respuesta = models.TextField()
     archivo_propuesta = models.TextField()
+    fecha_creacion = models.DateTimeField(default=timezone.now)
     tipo_propuesta_id = models.ForeignKey(
         "TipoPropuesta", on_delete=models.CASCADE)
     supervisor_id = models.ForeignKey(

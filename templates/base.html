@@ -6,11 +6,38 @@
         <title>Arriba las chivas</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/style.css" rel="stylesheet">
         {% tailwind_css %}
     </head>
-    <body>
-        {% block main %}
-        {% endblock%}
+    <body class="bg-slate-200 h-screen w-screen relative>
+        <div class="m-4">
+            {% block main %}
+            {% endblock%}
+        </div>
+        <nav class="h-20 w-full relative bg-red-500 shadow-2xl">
+            <!--<h1 class="font-mono text-2xl absolute left-20 top-0">Revision de Documentación</h1>-->
+            <div class="absolute right-0 top-3 h-full w-1/4 flex justify-evenly">
+              <img src="../img/perfil.png" alt="" class="absolute left-0 bottom-2 w-20 h-20">
+              <div>
+                <p class="font-mono text-xl">Nombre empleado</p>
+                <p class="font-mono text-lg text-slate-700">Admin</p>
+              </div>
+            </div>
+            <div class="absolute left-10 top-6 w-3/4 flex justify-evenly">
+              <h2 class="font-mono text-2xl">Inicio</h2>
+              <h2 class="font-mono text-2xl">Formularios</h2>
+              <h2 class="font-mono text-2xl">Mensajes</h2>
+              <h2 class="font-mono text-2xl">Ajustes</h2>
+            </div>
+          </nav>
+
+          <div class="m-4">
+            {% block main %}
+            {% endblock%}
+        </div>
+        
+          <footer class="absolute left-0 bottom-0 h-20 w-full bg-slate-400">
+            <p class="absolute right-6 bottom-6 font-mono text-slate-700">CENTRO DE CONTACTO BANORTE</p>
+            <p class="absolute right-6 bottom-2 font-mono text-slate-700">Version 1.0</p>
+          </footer>
     </body>
 </html>

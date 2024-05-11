@@ -1,0 +1,80 @@
+{% extends 'base.html' %} 
+
+{% block main %}
+<div class="flex flex-col justify-center">
+
+
+    <div class="grid grid-cols-1 my-5">
+        <h2 class="font-medium text-4xl text-center ">Propuesta {{ propuesta_data.id }}</h2>
+        <p class="text-center">Detalles</p>
+    </div>
+
+    <div class="grid grid-cols-1 justify-items-center w-full">
+        <div class="flex w-4/5 bg-gray-100">
+            <p class="w-1/2">Número de empleado</p>
+            <p>{{ propuesta_data.no_empleado }}</p>
+        </div>
+
+        <div class="flex w-4/5">
+            <p class="w-1/2">Nombre del empleado</p>
+            <p>{{ propuesta_data.nombre }}</p>
+        </div>
+
+        <div class="flex w-4/5 bg-gray-100">
+            <p class="w-1/2">Fecha de Recepción</p>
+            <p>{{ propuesta_data.fecha_creacion }}</p>
+        </div>
+
+        <div class="flex w-4/5">
+            <p class="w-1/2">Celular de Contacto</p>
+            <p>{{ propuesta_data.telefono }}</p>
+        </div>
+
+        <div class="flex w-4/5 bg-gray-100">
+            <p class="w-1/2">Torre a la que Pertenece</p>
+            <p>{{ propuesta_data.torre_perteneciente }}</p>
+        </div>
+
+        <div class="flex w-4/5">
+            <p class="w-1/2">Área</p>
+            <p>{{ propuesta_data.area }}</p>
+        </div>
+
+        <div class="flex w-4/5 bg-gray-100">
+            <p class="w-1/2">Puesto</p>
+            <p>{{ propuesta_data.puesto }}</p>
+        </div>
+
+        <div class="flex w-4/5">
+            <p class="w-1/2">Número Empleado Jefe Directo</p>
+            <p>{{ propuesta_data.supervisor_id.nombre }}</p>
+        </div>
+
+        <div class="flex w-4/5 bg-gray-100">
+            <p class="w-1/2">Nombre Jefe Directo</p>
+            <p>{{ propuesta_data.supervisor_id.numero_empleado }}</p>
+        </div>
+
+        <div class="flex w-4/5">
+            <p class="w-1/2">Correo Personal</p>
+            <p>{{ propuesta_data.correo_personal }}</p>
+        </div>
+
+        <div class="flex w-4/5 bg-gray-100">
+            <p class="w-1/2">Correo Institucional</p>
+            <p>{{ propuesta_data.correo_institucional }}</p>
+        </div>
+
+        <div class="flex w-4/5">
+            <p class="w-1/2">Archivo de Propuesta</p>
+            <p>Sin archivo</p>
+        </div>
+
+        <div class="flex w-4/5 bg-gray-100">
+            <p class="w-1/2">Aceptacion de Compormiso</p>
+            <p>No se que es esto</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
