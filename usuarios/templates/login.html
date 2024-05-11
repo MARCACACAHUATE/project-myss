@@ -1,33 +1,50 @@
-{% extends 'base.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Arriba las chivas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% tailwind_css %}
+    </head>
+    <body class="bg-slate-200 h-screen w-screen relative">
+        <nav class="h-20 w-full relative bg-red-500 shadow-2xl">
+                <div class="absolute left-10 top-6 w-3/4 flex justify-evenly">
+                        <b><h1 class="font-mono text-2xl absolute left-20 top-0">GRUPO FINANCIERO BANORTE</h1></b>
+                </div>
+          
+        </nav>
 
-{% block main %}
-<article class="bg-gradient-to-r from-green-50 to-green-50 col-span-2 h-full text-center">
-
-    <h1 class="text-2xl text-center">
-        Iniciar Sesión</h1>
     <!--{% if mensaje %}
         <p>{{ mensaje }}</p>
         {% endif %}-->
-
-    <form action="" method="post" class="w-full max-w-3xl bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="relative mt-2 p-6 flex justify-center ">     
+    <form action="" method="post" class="absolute max-w-2xl bg-white rounded px-8 pt-6 pb-8 mb-4">
         {% csrf_token %}
         <br>
         <div class="mb-4">
-            <input name="numero_empleado" id="numero_empleado"
-                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
-                type="text" placeholder="Número Empleado"><br>
+            <b><h2 class="block mb-2 font-mono text-2xl left-20 top-0">Inicio de Sesión</h2></b>
+        </div>
+        <div class="mb-4">
+            <label for="numero_empleado" class="block text-gray-700 font-bold mb-2">Número de Empleado</label>
+            <input name="numero_empleado" id="numero_empleado"                         
+                    class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="number" placeholder="Número de Empleado" required>   
         </div><br>
 
         <div class="relative">
-            <input name="password" id="password"
-                class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
-                type="password" placeholder="Contraseña">
+            <label for="password" class="block text-gray-700 font-bold mb-2">Password</label>
+            <input name="password" id="password"                         
+                    class="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    type="password" placeholder="Password" required>   
             <!--<a href="#"><p class="text-gray-400 underline mt-2 sm:absolute sm:left-0 ">¿Olvidasta tu contraseña?</p></a>-->
         </div>
         <input
-            class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
-            type="submit" value="Entrar"><br>
+            class="w-full py-2 font-bold rounded-full justify-items-center cursor-pointer hover:bg-blue-300 mt-2"onclick="validatePassword()"
+            type="submit" value="Iniciar"><br>
 
     </form>
-</article>
-{% endblock%}
+    </div>
+</body>
+</html>
