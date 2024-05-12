@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from propuestas.utils import Status
 
 
 class Propuesta(models.Model):
@@ -13,7 +14,7 @@ class Propuesta(models.Model):
     telefono = models.CharField(max_length=10)
     torre_perteneciente = models.CharField(max_length=100)
     compromiso = models.TextField()
-    status = models.CharField(max_length=30)
+    status = models.CharField(max_length=30, default=Status.PENDIENTE)
     descripcion_respuesta = models.TextField()
     archivo_propuesta = models.TextField()
     fecha_creacion = models.DateTimeField(default=timezone.now)
