@@ -16,9 +16,9 @@ class LoginView(View):
     def login_user(request):
 
         if request.method == 'POST':
-            matricula = request.POST["matricula"]
+            numero_empleado = request.POST["numero_empleado"]
             password = request.POST["password"]
-            user = authenticate(request, matricula=matricula, password=password)
+            user = authenticate(request, numero_empleado=numero_empleado, password=password)
 
             if user is not None:
                     request.session["role"] = user.role_id.Role
