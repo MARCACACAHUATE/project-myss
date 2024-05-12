@@ -1,13 +1,13 @@
 from django.views import View
-# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from propuestas.forms import RechazarPropuestaForm
 from propuestas.models import Propuesta
 from propuestas.utils import Status
 
 
-class RechazarPropuestaView(View):
-    # login_url = "login"
+class RechazarPropuestaView(LoginRequiredMixin, View):
+    login_url = "/login"
     template_name = "rechazar_propuesta.html"
 
     def get(self, request, *args, **kwargs):

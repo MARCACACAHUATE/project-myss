@@ -1,11 +1,12 @@
 from django.views import View
 from django.shortcuts import render
-# from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from propuestas.models import Propuesta
 from propuestas.utils import Status
 
 
-class PropuestasDetallesView(View):
+class PropuestasDetallesView(LoginRequiredMixin, View):
+    login_url = "/login"
     template_name = "propuesta_detalles.html"
 
     def get(self, request, *args, **kwargs):

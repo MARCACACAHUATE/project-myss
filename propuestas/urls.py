@@ -1,10 +1,9 @@
 from django.urls import path
-from propuestas.views import RevisionDocumentosView, EnvioDocumentosView
-# from usuarios.views import LoginView
 from propuestas.views import (
     RevisionDocumentosView,
     PropuestasDetallesView,
     RechazarPropuestaView,
+    EnvioDocumentosView,
 )
 
 
