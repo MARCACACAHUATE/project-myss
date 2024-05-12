@@ -16,16 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.shortcuts import render
 
 from usuarios import views
 
-def test_home(request):
-    return render(request, "base.html")
-
- 
 urlpatterns = [
-    path('login/', views.LoginView.login_user, name="login"),
+    path("", views.HomeView.as_view(), name="home"),
     path('login/', views.LoginView.login_user, name="login"),
     path('logout/', views.LoginView.logout_user, name="logout"),
     path("propuestas/", include("propuestas.urls", namespace="propuestas")),

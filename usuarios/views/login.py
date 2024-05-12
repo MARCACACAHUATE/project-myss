@@ -12,27 +12,29 @@ class LoginView(View):
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
-
     def login_user(request):
 
         if request.method == 'POST':
             numero_empleado = request.POST["numero_empleado"]
             password = request.POST["password"]
-            user = authenticate(request, numero_empleado=numero_empleado, password=password)
+            print(numero_empleado)
+            user = authenticate(
+                request, num_empleado=numero_empleado, password=password)
 
             if user is not None:
-                    request.session["role"] = user.role_id.Role
-                    request.session["user_id"] = user.id
+                print("Inicio de session")
+                request.session["role"] = user.role_id.nombre_role
+                request.session["user_id"] = user.id
 
-                    login(request, user)
-                    return redirect("/")
+                login(request, user)
+                return redirect("/")
             else:
+                print("Credenciales Invalidas")
                 return render(request, "login.html", {
                     "mensaje": "Credenciales invalidas"
                 })
 
         return render(request, "login.html")
-
 
     def logout_user(request):
         logout(request)

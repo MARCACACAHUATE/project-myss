@@ -134,6 +134,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Custom User Model
 AUTH_USER_MODEL = "usuarios.Usuario"
 
+AUTHENTICATION_BACKENDS = ['projectmyss.custom_auth.NumEmpleadoBackend']
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
