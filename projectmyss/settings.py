@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -90,12 +91,26 @@ WSGI_APPLICATION = 'projectmyss.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if config("DB_ENGINE", default="Sqlite") == "Postgres":
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': config("DB_NAME"),  # 'project-adb',
+            'USER': config("DB_USER"),  # 'root',
+            'PASSWORD': config("DB_PASSWORD"),  # '',
+            'HOST': config("DB_HOST"),  # 'localhost',
+            'PORT': config("DB_PORT"),  # '3306',
+        }
     }
-}
+else:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -147,4 +162,5 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-NPM_BIN_PATH = "npm.cmd"
+if config("USE_NPM_BIN", default=False, cast=bool):
+    NPM_BIN_PATH = config("USE_NPM_BIN")
