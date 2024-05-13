@@ -9,6 +9,7 @@ class RechazarPropuestaForm(forms.Form):
         ("Opcion 4", "Opcion 4"),
     )
 
-    descripcion = forms.CharField(widget=forms.Textarea(attrs={"rows": 5}))
+    descripcion = forms.CharField(
+        widget=forms.Textarea(attrs={"rows": 5, }), required=False)
     motivo_rechazo = forms.ChoiceField(
         choices=opciones, label="Seleccionar el motivo del rechazo")

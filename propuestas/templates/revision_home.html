@@ -24,6 +24,9 @@
                     Fecha de Recepción
                 </th>
                 <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                    Estatus
+                </th>
+                <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
                     Teléfono
                 </th>
                 <th class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
@@ -48,6 +51,9 @@
                 </td>
                 <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                     {{ propuesta.fecha_creacion }}
+                </td>
+                <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                    {{ propuesta.status }}
                 </td>
                 <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                     {{propuesta.telefono}}
