@@ -1,123 +1,117 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+{% load static %}
 
 {% block main %}
-<div class="flex flex-col justify-center m-4">
+<div class="flex justify-center ">
+    <div class="w-5/12 m-4">
 
 
-    <div class="grid grid-cols-1 my-5">
-        <h2 class="font-medium text-4xl text-center ">Propuesta {{ propuesta_data.id }}</h2>
-        <p class="text-center">Detalles</p>
-    </div>
-
-    <div class="grid grid-cols-1 justify-items-center w-full">
-        <div class="flex w-4/5 bg-gray-100">
-            <p class="w-1/2">Número de empleado</p>
-            <p>{{ propuesta_data.no_empleado }}</p>
+        <div class="grid grid-cols-1 my-5">
+            <h2 class="font-medium text-4xl text-center ">Propuesta {{ propuesta_data.id }}</h2>
+            <p class="text-center">Detalles</p>
         </div>
 
-        <div class="flex w-4/5">
-            <p class="w-1/2">Nombre del empleado</p>
-            <p>{{ propuesta_data.nombre }}</p>
-        </div>
+        <div class="grid grid-cols-1 justify-items-center w-full">
+            <div class="flex w-4/5 bg-gray-100">
+                <p class="w-1/2">Número de empleado</p>
+                <p>{{ propuesta_data.no_empleado }}</p>
+            </div>
 
-        <div class="flex w-4/5 bg-gray-100">
-            <p class="w-1/2">Fecha de Recepción</p>
-            <p>{{ propuesta_data.fecha_creacion }}</p>
-        </div>
+            <div class="flex w-4/5">
+                <p class="w-1/2">Nombre del empleado</p>
+                <p>{{ propuesta_data.nombre }}</p>
+            </div>
 
-        <div class="flex w-4/5">
-            <p class="w-1/2">Celular de Contacto</p>
-            <p>{{ propuesta_data.telefono }}</p>
-        </div>
+            <div class="flex w-4/5 bg-gray-100">
+                <p class="w-1/2">Fecha de Recepción</p>
+                <p>{{ propuesta_data.fecha_creacion }}</p>
+            </div>
 
-        <div class="flex w-4/5 bg-gray-100">
-            <p class="w-1/2">Torre a la que Pertenece</p>
-            <p>{{ propuesta_data.torre_perteneciente }}</p>
-        </div>
+            <div class="flex w-4/5">
+                <p class="w-1/2">Celular de Contacto</p>
+                <p>{{ propuesta_data.telefono }}</p>
+            </div>
 
-        <div class="flex w-4/5">
-            <p class="w-1/2">Área</p>
-            <p>{{ propuesta_data.area }}</p>
-        </div>
+            <div class="flex w-4/5 bg-gray-100">
+                <p class="w-1/2">Torre a la que Pertenece</p>
+                <p>{{ propuesta_data.torre_perteneciente }}</p>
+            </div>
 
-        <div class="flex w-4/5 bg-gray-100">
-            <p class="w-1/2">Puesto</p>
-            <p>{{ propuesta_data.puesto }}</p>
-        </div>
+            <div class="flex w-4/5">
+                <p class="w-1/2">Área</p>
+                <p>{{ propuesta_data.area }}</p>
+            </div>
 
-        <div class="flex w-4/5">
-            <p class="w-1/2">Número Empleado Jefe Directo</p>
-            <p>{{ propuesta_data.supervisor_id.nombre }}</p>
-        </div>
+            <div class="flex w-4/5 bg-gray-100">
+                <p class="w-1/2">Puesto</p>
+                <p>{{ propuesta_data.puesto }}</p>
+            </div>
 
-        <div class="flex w-4/5 bg-gray-100">
-            <p class="w-1/2">Nombre Jefe Directo</p>
-            <p>{{ propuesta_data.supervisor_id.numero_empleado }}</p>
-        </div>
+            <div class="flex w-4/5">
+                <p class="w-1/2">Número Empleado Jefe Directo</p>
+                <p>{{ propuesta_data.supervisor_id.nombre }}</p>
+            </div>
 
-        <div class="flex w-4/5">
-            <p class="w-1/2">Correo Personal</p>
-            <p>{{ propuesta_data.correo_personal }}</p>
-        </div>
+            <div class="flex w-4/5 bg-gray-100">
+                <p class="w-1/2">Nombre Jefe Directo</p>
+                <p>{{ propuesta_data.supervisor_id.numero_empleado }}</p>
+            </div>
 
-        <div class="flex w-4/5 bg-gray-100">
-            <p class="w-1/2">Correo Institucional</p>
-            <p>{{ propuesta_data.correo_institucional }}</p>
-        </div>
+            <div class="flex w-4/5">
+                <p class="w-1/2">Correo Personal</p>
+                <p>{{ propuesta_data.correo_personal }}</p>
+            </div>
+
+            <div class="flex w-4/5 bg-gray-100">
+                <p class="w-1/2">Correo Institucional</p>
+                <p>{{ propuesta_data.correo_institucional }}</p>
+            </div>
 
 
-        <div class="flex w-4/5 bg-gray-100">
-            <p class="w-1/2">Archivo de Propuesta</p>
-            <p>Sin archivo</p>
-        </div>
+            <div class="flex w-4/5 ">
+                <p class="w-1/2">Archivo de Propuesta</p>
+                <p>{{ propuesta_data.archivo_propuesta }}</p>
+            </div>
 
-        <div class="flex w-4/5">
-            <p class="w-1/2">Aceptacion de Compormiso</p>
-            <p>No se que es esto</p>
-        </div>
-
-        <div class="grid grid-cols-1 justify-items-center w-4/5 my-4 rounded">
-            <p class="font-medium text-xl text-center my-2">Estado de la propuesta</p>
-
-            <div class="flex w-full bg-gray-100">
+            <div class="flex w-4/5 bg-gray-100">
+                <p class="w-1/2">Aceptacion de Compormiso</p>
+                <p>No se que es esto</p>
+            </div>
+            <div class="flex w-4/5">
                 <p class="w-1/2">Estatus</p>
                 <p>{{ propuesta_data.status }}</p>
             </div>
 
             {% if propuesta_data.status == "Rechazada" %}
-                <div class="flex w-full">
-                    <p class="w-1/2">Motivo del Rechazo</p>
-                    <p>{{ propuesta_data.descripcion_respuesta }}</p>
-                </div>
+            <div class="flex w-4/5 bg-gray-100">
+                <p class="w-1/2">Motivo del Rechazo</p>
+                <p>{{ propuesta_data.descripcion_respuesta }}</p>
+            </div>
             {% endif %}
 
-            <div class="flex w-full bg-gray-100">
+            <div class="flex w-4/5 bg-gray-100">
                 <p class="w-1/2">Descripcion</p>
                 <p>{{ propuesta_data.descripcion_respuesta }}</p>
             </div>
         </div>
-    </div>
+        <div class="grid grid-cols-1 justify-items-center w-full h-40 my-4">
 
+            <div class="flex gap-4 justify-between w-4/5">
 
+                <a href="{% url 'propuestas:revision' %}">
+                    <button class="border border-black rounded bg-gray-300 px-10 py-1 h-[34px]">
+                        Regresar
+                    </button>
+                </a>
 
-    <div class="grid grid-cols-1 justify-items-center w-full h-40 my-4">
-
-        <div class="flex gap-4 justify-between w-4/5">
-
-            <a href="{% url 'propuestas:revision' %}">
-                <button class="border border-black rounded bg-gray-300 px-10 py-1 h-[34px]">
-                    Regresar
-                </button>
-            </a>
-
-            {% if propuesta_data.status == "Pendiente" %}
+                {% if propuesta_data.status == "Pendiente" %}
                 <form method="post">
                     {% csrf_token %}
                     <div class"flex">
 
-                            <button type="submit" class="border border-black rounded bg-gray-300 px-10 py-1 h-[34px]">
-                                Aceptar Propuesta
-                            </button>
+                        <button type="submit" class="border border-black rounded bg-gray-300 px-10 py-1 h-[34px]">
+                            Aceptar Propuesta
+                        </button>
 
                         <a href="{% url 'propuestas:rechazar' propuesta_id=propuesta_data.id %}">
                             <button type="button" class="border border-black rounded bg-gray-300 px-10 py-1 h-[34px]">
@@ -126,11 +120,21 @@
                         </a>
                     </div>
                 </form>
-            {% endif %}
+                {% endif %}
+
+            </div>
 
         </div>
 
     </div>
+    <div class="w-5/12 h-90 m-4 flex justify-center">
+        <object class="h-full" data='{% static propuesta_data.archivo_propuesta %}' type="application/pdf" width="400"
+            height="578">
 
+            <iframe src='{% static propuesta_data.archivo_propuesta %}' width="400" height="578">
+                <p>This browser does not support PDF!</p>
+            </iframe>
+        </object>
+    </div>
 </div>
 {% endblock %}

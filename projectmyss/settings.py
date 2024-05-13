@@ -165,4 +165,4 @@ INTERNAL_IPS = [
 ]
 
 if config("USE_NPM_BIN", default=False, cast=bool):
-    NPM_BIN_PATH = config("USE_NPM_BIN")
+    NPM_BIN_PATH = config("NPM_BIN")
