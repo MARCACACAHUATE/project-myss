@@ -164,7 +164,5 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-NPM_BIN_PATH = "npm.cmd"
-
-#if config("USE_NPM_BIN", default=False, cast=bool):
- #   NPM_BIN_PATH = config("NPM_BIN")
+if config("USE_NPM_BIN", default=False, cast=bool):
+    NPM_BIN_PATH = config("NPM_BIN")
