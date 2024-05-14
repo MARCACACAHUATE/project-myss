@@ -6,6 +6,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 from propuestas.models import Propuesta, TipoPropuesta
 from usuarios.models import Usuario
 from django.core.exceptions import ObjectDoesNotExist
+from propuestas.utils import Status
 
 
 # from django.contrib.auth.mixins import LoginRequiredMixin
@@ -51,7 +52,7 @@ class EnvioDocumentosView(View):
             tipo_propuesta_id_id=tipo.id,
             supervisor_id_id=ultimo_user.id,  # Observa que el campo se llama supervisor_id_id
             # Observa que el campo se llama tipo_propuesta_id_
-            status='PENDIENTE',  # Valor por defecto para el campo status
+            status=Status.PENDIENTE,  # Valor por defecto para el campo status
             descripcion_respuesta='',  # Valor por defecto para el campo descripcion_respuesta
             # Valor por defecto para el campo archivo_propuesta
             archivo_propuesta=nombre_archivo
