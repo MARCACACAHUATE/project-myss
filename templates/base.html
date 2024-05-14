@@ -4,7 +4,7 @@
 <html lang="es">
 
 <head>
-  <title>Arriba las chivas</title>
+  <title>CC Banorte Propuestas</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% tailwind_css %}
@@ -76,8 +76,8 @@
     <div class="h-full w-3/12 absolute top-0 right-0 flex justify-evenly">
       <img src="" alt="">
       <div class="m-2">
-        <p class="font-mono text-xl">Nombre empleado</p>
-        <p class="font-mono text-lg text-slate-700">Admin</p>
+        <p class="font-mono text-xl">{{user.nombre}}</p>
+        <p class="font-mono text-lg text-slate-700">{{user.role_id.nombre_role}}</p>
       </div>
     </div>
   </div>
