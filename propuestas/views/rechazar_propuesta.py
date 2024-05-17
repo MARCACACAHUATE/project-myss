@@ -5,6 +5,8 @@ from propuestas.forms import RechazarPropuestaForm
 from propuestas.models import Propuesta
 from propuestas.utils import Status
 from usuarios.models import Motivo
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 class RechazarPropuestaView(LoginRequiredMixin, View):
@@ -37,11 +39,16 @@ class RechazarPropuestaView(LoginRequiredMixin, View):
 
         if form.is_valid():
             data = form.cleaned_data
-            motivo = Motivo.objects.get(Motivo=data["motivo_rechazo"])
+            motivo = Motivo.objects.get(Titulo=data["motivo_rechazo"])
             propuesta.descripcion_respuesta = data["descripcion"]
             propuesta.status = Status.RECHAZADA
             propuesta.motivo = motivo
-
+            mensaje = [motivo.Titulo, motivo.Descripcion,
+                       propuesta.descripcion_respuesta]
+            cuerpo = "\n\n".join(mensaje)
+            send_mail(subject=settings.EMAIL_HOST_ASUNTO, message=cuerpo,
+                      from_email=settings.EMAIL_HOST_USER, recipient_list=[propuesta.correo_personal,
+                                                                           propuesta.correo_institucional])
             propuesta.save()
 
         else:

@@ -5,7 +5,8 @@ from usuarios.models import Motivo
 class RechazarPropuestaForm(forms.Form):
     motivos_rechazo = Motivo.objects.all()
 
-    opciones = [(motivo.Motivo, motivo.Motivo) for motivo in motivos_rechazo]
+    opciones = [(motivo.Titulo, motivo.Descripcion)
+                for motivo in motivos_rechazo]
 
     descripcion = forms.CharField(
         widget=forms.Textarea(attrs={"rows": 5, }), required=False)

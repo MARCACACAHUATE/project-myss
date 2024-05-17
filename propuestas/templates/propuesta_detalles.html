@@ -11,7 +11,7 @@
             <p class="text-center">Detalles</p>
         </div>
 
-        <div class="grid grid-cols-1 justify-items-center w-full">
+        <div class="grid grid-cols-1 justify-items-center overflow-y-auto h-64">
             <div class="flex w-4/5 bg-gray-100">
                 <p class="w-1/2">Número de empleado</p>
                 <p>{{ propuesta_data.no_empleado }}</p>
@@ -127,7 +127,7 @@
         </div>
 
     </div>
-    <div class="w-5/12 h-90 m-4 flex justify-center">
+    <div class="w-5/12 h-80 m-4 flex justify-center">
         <object class="h-full" data='{% static propuesta_data.archivo_propuesta %}' type="application/pdf" width="400"
             height="578">
 

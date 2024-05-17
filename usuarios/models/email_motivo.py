@@ -5,9 +5,10 @@ class Motivo(models.Model):
     # En principio serian dos, rechazado o aceptado
     Asunto = models.ForeignKey("Asunto", on_delete=models.CASCADE)
     # Define el motivo predeterminado para una propuesta que es rechazada o aceptada
-    Motivo = models.CharField(max_length=200)
+    Titulo = models.CharField(max_length=50)
+    Descripcion = models.CharField(max_length=200)
 
-    def crear_motivo(self, asunto, motivo):
-        NuevoMotivo = Motivo(Asunto=asunto, Motivo=motivo)
+    def crear_motivo(self, asunto, titulo, motivo):
+        NuevoMotivo = Motivo(Asunto=asunto, Titulo=titulo, Descripcion=motivo)
         NuevoMotivo.save()
         return NuevoMotivo
