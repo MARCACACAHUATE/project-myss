@@ -3,7 +3,7 @@
 {% block main %}
 <h2 class="font-medium text-4xl text-center my-6">Usuarios</h2>
 <section class="absolute top-6 right-9"><button data-modal-target="static-modal" data-modal-toggle="static-modal"
-        class="p-2 shadow-lg shadow-gray-500/50 bg-red-500 text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Nuevo
+        class="Nuevo p-2 shadow-lg shadow-gray-500/50 bg-red-500 text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Nuevo
         Usuario</button></section>
 <div class="overflow-y-auto h-72 px-0">
     <table class="w-full min-w-max table-auto text-center">
@@ -54,24 +54,26 @@
         </thead>
         <tbody>
             {% for user in lista_usuarios %}
-            <tr class="{{user.id}}">
-                <td class="p-4 border-b border-blue-gray-50">
-                    <div class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
+            <tr class="{{user.id}}" id="U{{user.id}}">
+                <td class="numero_empleado p-4 border-b border-blue-gray-50">
+                    <div
+                        class="numero block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
                         {{user.numero_empleado}}</p>
                     </div>
                 </td>
                 <td class="p-4 border-b border-blue-gray-50">
-                    <div class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
+                    <div
+                        class="nombre block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
                         {{user.nombre}}
                     </div>
                 </td>
                 <td class="p-4">
-                    <div class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
+                    <div class="rol block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
                         {{user.role_id.nombre_role}}
                     </div>
                 </td>
                 <td class="p-4">
-                    <div class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
+                    <div class=" block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
                         {% if user.is_active %}
                         <div class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-green-500/20 text-green-600 py-1 px-2 text-xs rounded-md"
                             style="opacity: 1;">
@@ -97,7 +99,8 @@
                     </div>
                 </td>
                 <td class="p-4">
-                    <button
+                    {% if user.role_id.id != 1 %}
+                    <button data-modal-target="modificar_modal" data-modal-toggle="modificar_modal"
                         class="Modificar cursor-pointer active:scale-[.80] relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30"
                         type="button">
                         <span
@@ -148,6 +151,7 @@
 
                         </span>
                     </button>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
@@ -155,6 +159,7 @@
     </table>
 </div>
 {% include 'modal_usuario.html' %}
+{% include 'modal_usuario_modificar.html' %}
 <script>
     // Función para obtener el atributo class del tr
     function BloquearU(event) {
@@ -243,6 +248,37 @@
             .catch(error => console.error("Error:", error));
     }
 
+    function SubirCambios() {
+        var Cambio = {}
+        Cambio = ObtenerCambios()
+        Cambio["Accion"] = "Modificar"
+        console.log(Cambio)
+        var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+
+        fetch("Usuarios", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify(Cambio)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Hubo un problema al realizar la solicitud.");
+                }
+                location.reload();
+                return response.json();
+            })
+            .then(datosRespuesta => {
+                // Manejar la respuesta del servidor
+                console.log(datosRespuesta);
+            })
+            .catch(error => console.error("Error:", error));
+    }
+
+
+
     function ObtenerUsuario(event) {
         // Obtener el elemento padre (tr) de la celda clicada (td)
         var tr = event.target.closest("tr");
@@ -253,6 +289,32 @@
     }
 
 
+    function EditarInfo(event) {
+        empleado = ObtenerUsuario(event)
+        Usuario = document.querySelector("tr#U" + empleado)
+        Numero = Usuario.querySelector("div.numero").textContent.trim()
+        Nombre = Usuario.querySelector("div.nombre").textContent.trim()
+        document.getElementById("m_numero_empleado").innerHTML = Numero
+        document.getElementById("m_numero_empleado").innerHTML = Numero
+        document.getElementById("m_Nombre").value = Nombre
+        document.getElementById("ModificarUsuario").setAttribute("name", empleado)
+        return empleado
+    }
+
+    function ObtenerCambios() {
+        const activeCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        const relatedInputs = {};
+        relatedInputs["Usuario"] = document.getElementById("ModificarUsuario").getAttribute("name")
+        activeCheckboxes.forEach((checkbox) => {
+            const targetInput = document.querySelector(checkbox.getAttribute('data-target'));
+            clase = targetInput.getAttribute("name")
+            if (targetInput.value.trim() !== "") {
+                relatedInputs[clase] = targetInput.value
+            }
+        });
+        return relatedInputs
+    }
+
     // Asociar el evento onclick a todas las celdas
     document.addEventListener("DOMContentLoaded", function () {
         var Modificar = document.querySelectorAll(".Modificar");
@@ -260,7 +322,7 @@
         var Eliminar = document.querySelectorAll(".Eliminar");
         var Desbloquear = document.querySelectorAll(".Desbloquear");
         Modificar.forEach(function (celda) {
-            celda.addEventListener("click", EliminarU);
+            celda.addEventListener("click", EditarInfo);
 
         });
         Bloquear.forEach(function (celda) {
@@ -271,6 +333,23 @@
         });
         Eliminar.forEach(function (celda) {
             celda.addEventListener("click", EliminarU);
+        });
+
+        Editar = document.getElementById('ModificarUsuario');
+        Editar.addEventListener("click", function (event) {
+            event.preventDefault;
+            SubirCambios()
+        });
+
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][data-target]');
+
+        // Agregar un event listener a cada checkbox
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener('change', function (event) {
+                const targetInput = document.querySelector(checkbox.getAttribute('data-target'));
+                targetInput.toggleAttribute("disabled");
+
+            });
         });
     });
 </script>

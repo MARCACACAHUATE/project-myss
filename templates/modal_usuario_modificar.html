@@ -1,7 +1,7 @@
 <!-- Modal toggle -->
 
 <!-- Main modal -->
-<div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
+<div id="modificar_modal" data-modal-backdrop="static" tabindex="-2" aria-hidden="true"
     class="hidden fixed right-0 top-20 bottom-20 w-11/12 shadow-md flex justify-center items-center ">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <!-- Modal content -->
@@ -9,11 +9,11 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <b>
-                    <h2 class="block mb-2 font-mono text-2xl left-20 top-0">Nuevo Asunto</h2>
+                    <h2 class="block mb-2 font-mono text-2xl left-20 top-0">Formulario para modificar usuarios</h2>
                 </b>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-hide="static-modal">
+                    data-modal-hide="modificar_modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -23,25 +23,38 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <div class=" p-2 overflow-y-auto h-64 space-y-4">
-                <form action="" method="POST" id="myForm" class="max-w-2xl bg-white rounded p-4">
+            <div class=" p-2 overflow-y-auto h-72 space-y-4">
+                <form action="" method="POST" id="myFormModificar" class="max-w-2xl bg-white rounded p-4">
                     {% csrf_token %}
-                    <div class="mb-4">
-                        <label for="Abreviatura" class="block text-gray-700 text-sm font-bold mb-2">Abreviatura</label>
-                        <input name="Abreviatura" id="Abreviatura"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Agregue una descripción" required>
+
+                    <div class="mb-4 flex gap-2 items-center">
+                        <p class="block text-gray-700 text-sm font-bold">Numero de Empleado: </p>
+                        <span id="m_numero_empleado"></span>
                     </div>
                     <div class="mb-4">
-                        <label for="Descripcion" class="block text-gray-700 text-sm font-bold mb-2">Tipo</label>
-                        <input name="Descripcion" id="Descripcion"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Agregue una descripción" required>
+                        <div class="flex items-center mb-2 gap-2">
+                            <label for="m_Nombre" class="block text-gray-700 text-sm font-bold">Nombre de
+                                Empleado</label>
+                            <input type="checkbox" data-target="#m_Nombre">
+                        </div>
+                        <input name="m_Nombre" id="m_Nombre"
+                            class="input shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+                            type="text" placeholder="Nombre de Empleado" disabled>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex items-center mb-2 gap-2">
+                            <label for="m_Contraseña"
+                                class="block text-gray-700 text-sm font-bold mb-2">Contraseña</label>
+                            <input type="checkbox" data-target="#m_Contraseña">
+                        </div>
+                        <input name="m_Contraseña" id="m_Contraseña"
+                            class="input input shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none"
+                            type="text" placeholder="Contraseña" disabled>
                     </div>
             </div>
             <!-- Modal footer -->
             <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                <button type="submit" form="myForm"
+                <button type="submit" form="myFormModificar" id="ModificarUsuario"
                     class="p-2 shadow-lg shadow-gray-500/50 bg-red-500 text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Confirmar</button>
             </div>
         </div>
@@ -49,9 +62,9 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const modalToggleButtons = document.querySelectorAll("[data-modal-toggle]");
+        const modalToggleButtons = document.querySelectorAll("button.Modificar[data-modal-toggle]");
         const modalHideButtons = document.querySelectorAll("[data-modal-hide]");
-        const modals = document.querySelectorAll("[data-modal-target]");
+        const modals = document.querySelectorAll("button.Modificar[data-modal-target]");
 
         modalToggleButtons.forEach(button => {
             button.addEventListener("click", function () {
