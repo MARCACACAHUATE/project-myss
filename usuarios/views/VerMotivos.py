@@ -24,22 +24,11 @@ class Ver_Motivo(View):
             # Aquí puedes acceder a los datos enviados por AJAX utilizando request.POST o request.body
         else:
             asunto = request.POST['tipo']
-            motivo = request.POST['Descripcion']
-            titulo = request.POST['Titulo']
+            motivo = request.POST['Motivo']
             clave = Asunto.objects.get(id=asunto)
-            print(asunto)
-            print(clave)
-            nuevomotivo = Motivo().crear_motivo(asunto=clave, motivo=motivo, titulo=titulo)
+            nuevomotivo = Motivo().crear_motivo(asunto=clave, motivo=motivo)
             print(nuevomotivo)
             return HttpResponseRedirect(reverse('usuarios:VerMotivo'))
-
-
-"""Asunto = models.ForeignKey("Asunto", on_delete=models.CASCADE)
-    Motivo = models.CharField(max_length=200)
-"""
-
-FormularioModificar = {"m_tipo": "Asunto", "m_Titulo": "Titulo",
-                       "m_Descripcion": "Descripcion"}
 
 
 def RespuestaAJAX(request):
@@ -59,7 +48,7 @@ def RespuestaAJAX(request):
         # Accion = request.POST['Accion']
         # Correo = request.POST['Correo']
     # usuario.create_user(Numero, Nombre, Contraseña)
-    return switch.ejecutar_opcion(Accion, datos)
+    return switch.ejecutar_opcion(Accion)
 
 
 class Acciones_Motivo:
@@ -67,12 +56,12 @@ class Acciones_Motivo:
         self.id = id
         self.motivo = Motivo.objects
 
-    def Eliminar(self, datos):
+    def Eliminar(self):
         objeto_a_modificar = self.motivo.get(id=self.id)
         objeto_a_modificar.delete()
         return JsonResponse({'resultado': "SIP"})
 
-    def Bloquear(self, datos):
+    def Bloquear(self):
         print("Estás en el caso 2")
         print("Estás en el caso eliminar ", self.id)
         # Suponiendo que deseas modificar el objeto con id=1
@@ -84,23 +73,11 @@ class Acciones_Motivo:
         objeto_a_modificar.save()
         return JsonResponse({'resultado': "motivo Deshabilitado"})
 
-    def Modificar(self, datos):
-        modelo = self.motivo.get(id=self.id)
-        for clave in datos:
-            if clave in FormularioModificar:
-                if FormularioModificar[clave] == "Asunto":
-                    llave = Asunto.objects.get(id=datos[clave])
-                    setattr(modelo, FormularioModificar[clave], llave)
-                else:
-                    setattr(modelo, FormularioModificar[clave], datos[clave])
-        modelo.save()
-        return JsonResponse({'resultado': "Usuario Modificado"})
-
-    def default(self, datos):
+    def default(self):
         print("Opción no válida")
         print("Estás en el caso eliminar")
         return JsonResponse({'resultado': "NOP"})
 
-    def ejecutar_opcion(self, opcion, datos):
+    def ejecutar_opcion(self, opcion):
         metodo = getattr(self, opcion, self.default)
-        return metodo(datos)
+        return metodo()

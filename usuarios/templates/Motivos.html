@@ -3,7 +3,7 @@
 {% block main %}
 <h2 class="font-medium text-4xl text-center my-6">Motivos</h2>
 <section class="absolute top-6 right-9"><button data-modal-target="static-modal" data-modal-toggle="static-modal"
-        class="Nuevo p-2 shadow-lg shadow-gray-500/50 bg-red-500 text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Nuevo
+        class="p-2 shadow-lg shadow-gray-500/50 bg-red-500 text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Nuevo
         Motivo</button><a href="Asuntos">
         <button
             class="p-2 shadow-lg shadow-gray-500/50 bg-red-500 text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Ver
@@ -14,47 +14,40 @@
             <tr>
                 <th
                     class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
-                    Clase
-                </th>
-                <th
-                    class=" cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
-                    Titulo
-                </th>
-                <th
-                    class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
-                    Descripcion
+                    <p class="">
+                        Asunto
+                    </p>
                 </th>
                 <th
                     class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
-                    Acciones
+                    <p class="">
+                        Descripcion
+                    </p>
+                </th>
+                <th
+                    class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
+                    <p class="">
+                        Acciones</p>
                 </th>
             </tr>
         </thead>
         <tbody>
             {% for motivo in lista_motivos %}
-            <tr class="{{motivo.id}}" id="M{{motivo.id}}">
+            <tr class="{{motivo.id}}">
                 <td class="p-4 border-b border-blue-gray-50">
-                    <div
-                        class="Clase block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
+                    <div class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
                         {{motivo.Asunto.Tipo}}
                     </div>
                 </td>
                 <td class="p-4">
-                    <div
-                        class="Titulo block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                        {{motivo.Titulo}}
-                    </div>
-                </td>
-                <td class="p-4">
-                    <div
-                        class="Descripcion overflow-y-hidden block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
-                        {{motivo.Descripcion}}
+                    <div class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal">
+                        {{motivo.Motivo}}
                     </div>
                 </td>
                 <td class="p-4">
                     <button
                         class="Modificar cursor-pointer active:scale-[.80] relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-blue-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30"
-                        type="button" data-modal-target="modificar_modal" data-modal-toggle="modificar_modal">
+                        type="button">
                         <span
                             class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
@@ -84,7 +77,6 @@
     </table>
 </div>
 {% include 'modal_motivo.html' %}
-{% include 'modal_motivo_modificar.html' %}
 <script>
     // Función para obtener el atributo class del tr
     function EliminarU(event) {
@@ -132,88 +124,18 @@
         var Eliminar = document.querySelectorAll(".Eliminar");
         var Desbloquear = document.querySelectorAll(".Desbloquear");
         Modificar.forEach(function (celda) {
-            celda.addEventListener("click", EditarInfo);
+            celda.addEventListener("click", EliminarU);
+
+        });
+        Bloquear.forEach(function (celda) {
+            celda.addEventListener("click", BloquearU);
+        });
+        Desbloquear.forEach(function (celda) {
+            celda.addEventListener("click", DesbloquearU);
         });
         Eliminar.forEach(function (celda) {
             celda.addEventListener("click", EliminarU);
         });
-
-        Editar = document.getElementById('ModificarUsuario');
-        Editar.addEventListener("click", function (event) {
-            event.preventDefault;
-            SubirCambios()
-        });
-
-        const checkboxes = document.querySelectorAll('input[type="checkbox"][data-target]');
-
-        // Agregar un event listener a cada checkbox
-        checkboxes.forEach(function (checkbox) {
-            checkbox.addEventListener('change', function (event) {
-                const targetInput = document.querySelector(checkbox.getAttribute('data-target'));
-                targetInput.toggleAttribute("disabled");
-
-            });
-        });
     });
-
-
-    function EditarInfo(event) {
-        empleado = ObtenerUsuario(event)
-        Usuario = document.querySelector("tr#M" + empleado)
-        Clase = Usuario.querySelector("div.Clase").textContent.trim()
-        Titulo = Usuario.querySelector("div.Titulo").textContent.trim()
-        console.log(Titulo)
-        Descripcion = Usuario.querySelector("div.Descripcion").textContent.trim()
-        document.getElementById("m_Titulo").value = Titulo
-        document.getElementById("m_Descripcion").value = Descripcion
-        document.getElementById("ModificarUsuario").setAttribute("name", empleado)
-        return empleado
-    }
-
-    function ObtenerCambios() {
-        const activeCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-        const relatedInputs = {};
-        relatedInputs["Usuario"] = document.getElementById("ModificarUsuario").getAttribute("name")
-        activeCheckboxes.forEach((checkbox) => {
-            const targetInput = document.querySelector(checkbox.getAttribute('data-target'));
-            clase = targetInput.getAttribute("name")
-            if (targetInput.value.trim() !== "") {
-                relatedInputs[clase] = targetInput.value
-            }
-        });
-        return relatedInputs
-    }
-
-
-    function SubirCambios() {
-        var Cambio = {}
-        Cambio = ObtenerCambios()
-        Cambio["Accion"] = "Modificar"
-        console.log(Cambio)
-        var csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
-
-        fetch("Motivos", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrfToken
-            },
-            body: JSON.stringify(Cambio)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Hubo un problema al realizar la solicitud.");
-                }
-                location.reload();
-                return response.json();
-            })
-            .then(datosRespuesta => {
-                // Manejar la respuesta del servidor
-                console.log(datosRespuesta);
-            })
-            .catch(error => console.error("Error:", error));
-    }
-
-
 </script>
 {% endblock %}

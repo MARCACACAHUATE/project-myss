@@ -10,13 +10,8 @@
             <h2 class="font-medium text-4xl text-center ">Propuesta {{ propuesta_data.id }}</h2>
             <p class="text-center">Detalles</p>
         </div>
-
     
         <div class="grid grid-cols-1 justify-items-center overflow-auto h-64">
-
-
-        <div class="grid grid-cols-1 justify-items-center overflow-y-auto h-64">
-
             <div class="flex w-4/5 bg-gray-100">
                 <p class="w-1/2">Número de empleado</p>
                 <p>{{ propuesta_data.no_empleado }}</p>
@@ -90,7 +85,7 @@
             {% if propuesta_data.status == "Rechazada" %}
             <div class="flex w-4/5 bg-gray-100">
                 <p class="w-1/2">Motivo del Rechazo</p>
-                <p>{{ propuesta_data.motivo.Motivo }}</p>
+                <p>{{ propuesta_data.descripcion_respuesta }}</p>
             </div>
             {% endif %}
 
@@ -112,7 +107,7 @@
                 {% if propuesta_data.status == "Pendiente" %}
                 <form method="post">
                     {% csrf_token %}
-                    <div class="grid gap-2">
+                    <div class"flex">
 
                         <button type="submit" class="border border-black rounded bg-gray-300 px-10 py-1 h-[34px]">
                             Aceptar Propuesta
@@ -132,9 +127,7 @@
         </div>
 
     </div>
-
     <div class="w-5/12 h-90 m-4 flex justify-center grid grid-cols-1 justify-items-center overflow-auto h-96">
-    <div class="w-5/12 h-80 m-4 flex justify-center">
         <object class="h-full" data='{% static propuesta_data.archivo_propuesta %}' type="application/pdf" width="400"
             height="578">
 
