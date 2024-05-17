@@ -85,7 +85,7 @@
             {% if propuesta_data.status == "Rechazada" %}
             <div class="flex w-4/5 bg-gray-100">
                 <p class="w-1/2">Motivo del Rechazo</p>
-                <p>{{ propuesta_data.descripcion_respuesta }}</p>
+                <p>{{ propuesta_data.motivo.Motivo }}</p>
             </div>
             {% endif %}
 
@@ -107,7 +107,7 @@
                 {% if propuesta_data.status == "Pendiente" %}
                 <form method="post">
                     {% csrf_token %}
-                    <div class"flex">
+                    <div class="grid gap-2">
 
                         <button type="submit" class="border border-black rounded bg-gray-300 px-10 py-1 h-[34px]">
                             Aceptar Propuesta

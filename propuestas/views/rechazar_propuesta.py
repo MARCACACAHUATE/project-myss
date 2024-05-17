@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from propuestas.forms import RechazarPropuestaForm
 from propuestas.models import Propuesta
 from propuestas.utils import Status
+from usuarios.models import Motivo
 
 
 class RechazarPropuestaView(LoginRequiredMixin, View):
@@ -11,26 +12,23 @@ class RechazarPropuestaView(LoginRequiredMixin, View):
     template_name = "rechazar_propuesta.html"
 
     def get(self, request, *args, **kwargs):
-        print("Se esta rechazando una propuesta")
-
         form = RechazarPropuestaForm()
+        motivos = Motivo.objects.all()
 
         context = {
             "propuesta_id": self.kwargs["propuesta_id"],
-            "form": form
+            "form": form,
+            "motivos_rechazon": motivos
         }
 
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
         propuesta_id = self.kwargs["propuesta_id"]
-        print(propuesta_id)
 
         propuesta = Propuesta.objects.get(id=propuesta_id)
 
         form = RechazarPropuestaForm(request.POST)
-
-        print(form.data)
 
         context = {
             "propuesta_id": propuesta_id,
@@ -39,8 +37,10 @@ class RechazarPropuestaView(LoginRequiredMixin, View):
 
         if form.is_valid():
             data = form.cleaned_data
+            motivo = Motivo.objects.get(Motivo=data["motivo_rechazo"])
             propuesta.descripcion_respuesta = data["descripcion"]
             propuesta.status = Status.RECHAZADA
+            propuesta.motivo = motivo
 
             propuesta.save()
 
