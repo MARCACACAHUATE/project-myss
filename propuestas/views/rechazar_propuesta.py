@@ -4,9 +4,6 @@ from django.shortcuts import render, redirect
 from propuestas.forms import RechazarPropuestaForm
 from propuestas.models import Propuesta
 from propuestas.utils import Status
-from usuarios.models import Motivo
-from django.core.mail import send_mail
-from django.conf import settings
 
 
 class RechazarPropuestaView(LoginRequiredMixin, View):
@@ -14,23 +11,26 @@ class RechazarPropuestaView(LoginRequiredMixin, View):
     template_name = "rechazar_propuesta.html"
 
     def get(self, request, *args, **kwargs):
+        print("Se esta rechazando una propuesta")
+
         form = RechazarPropuestaForm()
-        motivos = Motivo.objects.all()
 
         context = {
             "propuesta_id": self.kwargs["propuesta_id"],
-            "form": form,
-            "motivos_rechazon": motivos
+            "form": form
         }
 
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
         propuesta_id = self.kwargs["propuesta_id"]
+        print(propuesta_id)
 
         propuesta = Propuesta.objects.get(id=propuesta_id)
 
         form = RechazarPropuestaForm(request.POST)
+
+        print(form.data)
 
         context = {
             "propuesta_id": propuesta_id,
@@ -39,16 +39,9 @@ class RechazarPropuestaView(LoginRequiredMixin, View):
 
         if form.is_valid():
             data = form.cleaned_data
-            motivo = Motivo.objects.get(Titulo=data["motivo_rechazo"])
             propuesta.descripcion_respuesta = data["descripcion"]
             propuesta.status = Status.RECHAZADA
-            propuesta.motivo = motivo
-            mensaje = [motivo.Titulo, motivo.Descripcion,
-                       propuesta.descripcion_respuesta]
-            cuerpo = "\n\n".join(mensaje)
-            send_mail(subject=settings.EMAIL_HOST_ASUNTO, message=cuerpo,
-                      from_email=settings.EMAIL_HOST_USER, recipient_list=[propuesta.correo_personal,
-                                                                           propuesta.correo_institucional])
+
             propuesta.save()
 
         else:

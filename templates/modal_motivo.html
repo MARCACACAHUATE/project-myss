@@ -39,16 +39,10 @@
                         </select>
                     </div> <br>
                     <div class="mb-4">
-                        <label for="Titulo" class="block text-gray-700 text-sm font-bold mb-2">Titulo</label>
-                        <input name="Titulo" id="Titulo"
+                        <label for="Motivo" class="block text-gray-700 text-sm font-bold mb-2">Motivo</label>
+                        <input name="Motivo" id="Motivo"
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Titulo del correo" required>
-                    </div><br>
-                    <div class="mb-4">
-                        <label for="Descripcion" class="block text-gray-700 text-sm font-bold mb-2">Descripcion</label>
-                        <input name="Descripcion" id="Descripcion"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            type="text" placeholder="Descripción del correo" required>
+                            type="text" placeholder="Motivo del correo" required>
                     </div><br>
             </div>
             <!-- Modal footer -->
@@ -61,8 +55,9 @@
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const modalToggleButtons = document.querySelectorAll("button.Nuevo[data-modal-toggle]");
-        const modals = document.querySelectorAll("button.Nuevo[data-modal-target]");
+        const modalToggleButtons = document.querySelectorAll("[data-modal-toggle]");
+        const modalHideButtons = document.querySelectorAll("[data-modal-hide]");
+        const modals = document.querySelectorAll("[data-modal-target]");
 
         modalToggleButtons.forEach(button => {
             button.addEventListener("click", function () {
@@ -70,6 +65,16 @@
                 const targetModal = document.getElementById(targetModalId);
                 if (targetModal) {
                     targetModal.classList.toggle("hidden");
+                }
+            });
+        });
+
+        modalHideButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                const targetModalId = this.dataset.modalHide;
+                const targetModal = document.getElementById(targetModalId);
+                if (targetModal) {
+                    targetModal.classList.add("hidden");
                 }
             });
         });
