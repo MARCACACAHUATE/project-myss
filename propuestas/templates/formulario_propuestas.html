@@ -24,13 +24,14 @@
                 <!--{{form.as_p}}-->
                 <form action="" method="POST" enctype="multipart/form-data" id="myForm"
                         class="max-w-2xl bg-white rounded px-8 pt-6 pb-8 mb-4">
+                        {% csrf_token %}
                         <div class="mb-4">
                                 <b>
                                         <h2 class="block mb-2 font-mono text-2xl left-20 top-0">PROPUESTA PARA
                                                 MODIFICACIONES EN ÁREAS, PROCESOS, ETC.</h2>
                                 </b>
                         </div>
-                        {% csrf_token %}
+                        
 
                         <div class="mb-4">
                                 <label for="numero_empleado" class="block text-gray-700 font-bold mb-2">Número de
