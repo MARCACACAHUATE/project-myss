@@ -3,9 +3,10 @@ from django.db import models
 
 class Asunto(models.Model):
     # Puede se Aceptado o Rechazado
-    Tipo = models.CharField(max_length=10)
+    Abreviatura = models.CharField(max_length=10)
+    Tipo = models.CharField(max_length=20)
 
-    def crear_asunto(self, asunto):
-        NuevoAsunto = Asunto(Tipo=asunto)
+    def crear_asunto(self, tipo, abreviatura):
+        NuevoAsunto = Asunto(Tipo=tipo, Abreviatura=abreviatura)
         NuevoAsunto.save()
         return NuevoAsunto

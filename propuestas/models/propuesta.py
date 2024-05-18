@@ -16,9 +16,11 @@ class Propuesta(models.Model):
     compromiso = models.TextField()
     status = models.CharField(max_length=30, default=Status.PENDIENTE)
     descripcion_respuesta = models.TextField()
+    motivo = models.ForeignKey(
+        "usuarios.Motivo", null=True, blank=True, on_delete=models.SET_DEFAULT, default=None)
     archivo_propuesta = models.TextField()
     fecha_creacion = models.DateTimeField(default=timezone.now)
     tipo_propuesta_id = models.ForeignKey(
         "TipoPropuesta", on_delete=models.CASCADE)
     supervisor_id = models.ForeignKey(
-        "usuarios.Usuario", on_delete=models.CASCADE)
+        "usuarios.Usuario", null=True, blank=True, on_delete=models.SET_NULL)
