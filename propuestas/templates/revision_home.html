@@ -8,7 +8,7 @@
         <input class="rounded-full h-7" placeholder="Búsqueda" type="text" />
     </div>-->
 
-    <div class="overflow-auto max-h-[600px]">
+    <div class="overflow-auto max-h-[600px] overflow-y-auto h-64">
         <table class="w-full caption-bottom text-sm">
             <thead class="[&amp;_tr]:border-b">
                 <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
@@ -17,19 +17,19 @@
                         No. Empleado
                     </th>
                     <th
-                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                        class="h-12 px-4 text-center align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
                         Nombre
                     </th>
                     <th
-                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                        class="h-12 px-4 text-center align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
                         Fecha de Recepción
                     </th>
                     <th
-                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                        class="h-12 px-4 text-center align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
                         Estatus
                     </th>
                     <th
-                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                        class="h-12 px-4 text-center align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
                         Teléfono
                     </th>
                     <th
@@ -37,8 +37,8 @@
                         Torre la que pertenece
                     </th>
                     <th
-                        class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
-                        Area
+                        class="h-12 px-4 text-center align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                        Área
                     </th>
                     <th
                         class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
@@ -50,7 +50,7 @@
                 {% for propuesta in lista_propuestas %}
                 <tr
                     class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted hover:bg-gray-100">
-                    <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                    <td class="p-4 align-middle text-center [&amp;:has([role=checkbox])]:pr-0">
                         {{propuesta.no_empleado}}
                     </td>
                     <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
@@ -65,13 +65,13 @@
                     <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
                         {{propuesta.telefono}}
                     </td>
-                    <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                    <td class="p-4 align-middle text-center [&amp;:has([role=checkbox])]:pr-0">
                         {{propuesta.torre_perteneciente}}
                     </td>
                     <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-                        No Hay
+                        {{propuesta.area}}
                     </td>
-                    <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
+                    <td class="p-4 align-middle text-center [&amp;:has([role=checkbox])]:pr-0">
                         <a href="{% url 'propuestas:pro_detalles' propuesta_id=propuesta.id %}">
                             <p class="underline cursor-pointer">Detalles</p>
                         </a>
