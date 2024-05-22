@@ -2,7 +2,7 @@
 
 <!-- Main modal -->
 <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-    class="hidden fixed right-0 top-20 bottom-20 w-11/12 shadow-md flex justify-center items-center ">
+    class="hidden fixed right-0 top-20 bottom-20 w-11/12 shadow-md justify-center items-center ">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow">
@@ -53,16 +53,15 @@
             <!-- Modal footer -->
             <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                 <button type="submit" form="myForm"
-                    class="p-2 shadow-lg shadow-gray-500/50 bg-red-500 text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Confirmar</button>
+                    class="Nuevo p-2 shadow-lg shadow-gray-500/50 bg-red-500 text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Confirmar</button>
             </div>
         </div>
     </div>
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const modalToggleButtons = document.querySelectorAll("[data-modal-toggle]");
-        const modalHideButtons = document.querySelectorAll("[data-modal-hide]");
-        const modals = document.querySelectorAll("[data-modal-target]");
+        const modalToggleButtons = document.querySelectorAll("button.Nuevo[data-modal-toggle]");
+        const modals = document.querySelectorAll("button.Nuevo[data-modal-target]");
 
         modalToggleButtons.forEach(button => {
             button.addEventListener("click", function () {
@@ -74,14 +73,6 @@
             });
         });
 
-        modalHideButtons.forEach(button => {
-            button.addEventListener("click", function () {
-                const targetModalId = this.dataset.modalHide;
-                const targetModal = document.getElementById(targetModalId);
-                if (targetModal) {
-                    targetModal.classList.add("hidden");
-                }
-            });
-        });
+        
     });
 </script>

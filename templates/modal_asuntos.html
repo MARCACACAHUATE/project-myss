@@ -2,7 +2,7 @@
 
 <!-- Main modal -->
 <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-    class="hidden fixed right-0 top-20 bottom-20 w-11/12 shadow-md flex justify-center items-center ">
+    class="hidden fixed right-0 top-20 bottom-20 w-11/12 shadow-md justify-center items-center ">
     <div class="relative p-4 w-full max-w-2xl max-h-full">
         <!-- Modal content -->
         <div class="relative bg-white rounded-lg shadow">
@@ -27,11 +27,17 @@
                 <form action="" method="POST" id="myForm" class="max-w-2xl bg-white rounded p-4">
                     {% csrf_token %}
                     <div class="mb-4">
-                        <label for="Descripcion" class="block text-gray-700 text-sm font-bold mb-2">Descripcion</label>
+                        <label for="Descripcion" class="block text-gray-700 text-sm font-bold mb-2">Tipo</label>
                         <input name="Descripcion" id="Descripcion"
                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             type="text" placeholder="Agregue una descripción" required>
-                    </div><br>
+                    </div>
+                    <div class="mb-4">
+                        <label for="Abreviatura" class="block text-gray-700 text-sm font-bold mb-2">Abreviatura</label>
+                        <input name="Abreviatura" id="Abreviatura"
+                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            type="text" placeholder="Agregue una descripción" required>
+                    </div>                    
             </div>
             <!-- Modal footer -->
             <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">

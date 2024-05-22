@@ -23,7 +23,8 @@ class Ver_Asuntos(View):
             # Aquí puedes acceder a los datos enviados por AJAX utilizando request.POST o request.body
         else:
             Descripción = request.POST['Descripcion']
-            asunto = Asunto().crear_asunto(asunto=Descripción)
+            Titulo = request.POST['Abreviatura']
+            asunto = Asunto().crear_asunto(tipo=Descripción, abreviatura=Titulo)
             print(asunto)
             return HttpResponseRedirect(reverse('usuarios:VerAsunto'))
 

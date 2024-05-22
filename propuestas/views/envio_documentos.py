@@ -7,6 +7,8 @@ from propuestas.models import Propuesta, TipoPropuesta
 from usuarios.models import Usuario
 from django.core.exceptions import ObjectDoesNotExist
 from propuestas.utils import Status
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 # from django.contrib.auth.mixins import LoginRequiredMixin
@@ -50,6 +52,7 @@ class EnvioDocumentosView(View):
         torre = request.POST['torre']
         area = request.POST['area']
         puesto = request.POST['puesto']
+        correo_institucional = request.POST['correo_institucional']
         correo_personal = request.POST['correo_personal']
         Propuesta.objects.create(
             nombre=nombre_empleado,
@@ -58,6 +61,7 @@ class EnvioDocumentosView(View):
             area=area,
             puesto=puesto,
             correo_personal=correo_personal,
+            correo_institucional=correo_institucional,
             telefono=telefono_contacto,
             torre_perteneciente=torre,
             tipo_propuesta_id_id=tipo.id,
@@ -77,7 +81,7 @@ class EnvioDocumentosView(View):
         except MultiValueDictKeyError:
             print("No se encontró el campo 'documento' en request.FILES")
             # Manejar el error de alguna manera, por ejemplo, redirigir a una página de error
-        return render(request, self.template_name)
+        return HttpResponseRedirect(reverse('propuestas:formulario'))
 
 
 def handle_uploaded_file(archivo, nombre):

@@ -3,7 +3,7 @@
 
 {% block main %}
 <div class="flex justify-center ">
-    <div class="w-5/12 m-4">
+    <div class="w-6/12 m-4">
 
 
         <div class="grid grid-cols-1 my-5">
@@ -11,7 +11,8 @@
             <p class="text-center">Detalles</p>
         </div>
 
-        <div class="grid grid-cols-1 justify-items-center w-full">
+        <div class="grid grid-cols-1 justify-items-center overflow-y-auto h-64">
+
             <div class="flex w-4/5 bg-gray-100">
                 <p class="w-1/2">Número de empleado</p>
                 <p>{{ propuesta_data.no_empleado }}</p>
@@ -75,7 +76,7 @@
 
             <div class="flex w-4/5 bg-gray-100">
                 <p class="w-1/2">Aceptacion de Compormiso</p>
-                <p>No se que es esto</p>
+                <p>Aceptado</p>
             </div>
             <div class="flex w-4/5">
                 <p class="w-1/2">Estatus</p>
@@ -87,12 +88,13 @@
                 <p class="w-1/2">Motivo del Rechazo</p>
                 <p>{{ propuesta_data.motivo.Motivo }}</p>
             </div>
-            {% endif %}
+            
 
             <div class="flex w-4/5 bg-gray-100">
                 <p class="w-1/2">Descripcion</p>
                 <p>{{ propuesta_data.descripcion_respuesta }}</p>
             </div>
+            {% endif %}
         </div>
         <div class="grid grid-cols-1 justify-items-center w-full h-40 my-4">
 
@@ -127,11 +129,13 @@
         </div>
 
     </div>
-    <div class="w-5/12 h-90 m-4 flex justify-center">
-        <object class="h-full" data='{% static propuesta_data.archivo_propuesta %}' type="application/pdf" width="400"
+
+    <div class="w-5/12 h-11/12 m-4 justify-center grid grid-cols-1 justify-items-center overflow-auto ">
+    <div class="w-full h-96 m-4 flex justify-center">
+        <object class="h-full w-11/12" data='{% static propuesta_data.archivo_propuesta %}' type="application/pdf" width="800"
             height="578">
 
-            <iframe src='{% static propuesta_data.archivo_propuesta %}' width="400" height="578">
+            <iframe src='{% static propuesta_data.archivo_propuesta %}' width="800" height="578">
                 <p>This browser does not support PDF!</p>
             </iframe>
         </object>
