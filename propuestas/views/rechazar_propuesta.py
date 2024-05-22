@@ -39,12 +39,12 @@ class RechazarPropuestaView(LoginRequiredMixin, View):
 
         if form.is_valid():
             data = form.cleaned_data
-            motivo = Motivo.objects.get(Titulo=data["motivo_rechazo"])
             propuesta.descripcion_respuesta = data["descripcion"]
+            motivo = Motivo.objects.get(Titulo=data["motivo_rechazo"])        
             propuesta.status = Status.RECHAZADA
             propuesta.motivo = motivo
-            mensaje = [motivo.Titulo, motivo.Descripcion,
-                       propuesta.descripcion_respuesta]
+            mensaje = [motivo.Descripcion, motivo.Titulo,  "\nComentarios Adicionales:",
+                            propuesta.descripcion_respuesta]
             cuerpo = "\n\n".join(mensaje)
             send_mail(subject=settings.EMAIL_HOST_ASUNTO, message=cuerpo,
                       from_email=settings.EMAIL_HOST_USER, recipient_list=[propuesta.correo_personal,

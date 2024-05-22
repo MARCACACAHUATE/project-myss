@@ -15,7 +15,7 @@ class Ver_Motivo(View):
     def get(self, request, *args, **kwargs):
         motivo = Motivo.objects.all()
         asuntos = Asunto.objects.all()
-        return render(request, self.template_name, {"lista_motivos": motivo, "lista_asuntos": asuntos})
+        return render(request, self.template_name, {"lista_asuntos": asuntos, "lista_motivos": motivo})
 
     def post(self, request, *args, **kwargs):
         if request.headers.get('Content-Type') == 'application/json':
@@ -24,8 +24,8 @@ class Ver_Motivo(View):
             # Aquí puedes acceder a los datos enviados por AJAX utilizando request.POST o request.body
         else:
             asunto = request.POST['tipo']
-            motivo = request.POST['Descripcion']
             titulo = request.POST['Titulo']
+            motivo = request.POST['Descripcion']            
             clave = Asunto.objects.get(id=asunto)
             print(asunto)
             print(clave)
