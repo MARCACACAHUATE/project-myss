@@ -64,27 +64,57 @@
                         </div><br>
 
                         <div class="mb-4">
-                                <label for="torre" class="block text-gray-700 text-sm font-bold mb-2">Torre en la que
-                                        Pertenece</label>
-                                <input name="torre" id="torre"
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text" placeholder="Torre en la que Pertenece" required>
+                                <label for="torre" class="block text-gray-700 text-sm font-bold mb-2">
+                                    Torre en la que Pertenece
+                                </label>
+                                <select
+                                    name="torre"
+                                    id="torre"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    type="text" 
+                                    placeholder="Torre en la que Pertenece" 
+                                    required>
+                                    <option value="" hidden>Torre en la que Pertenece</option>
+                                    {% for torre in torres %}
+                                    <option value={{ torre }}>{{ torre }}</option>
+                                    {% endfor %}
+                                </select>
                         </div><br>
 
                         <div class="mb-4">
-                                <label for="area" class="block text-gray-700 text-sm font-bold mb-2">Área en la que
-                                        Pertenece</label>
-                                <input name="area" id="area"
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text" placeholder="Área en la que Pertenece" required>
+                                <label for="area" class="block text-gray-700 text-sm font-bold mb-2">
+                                    Área en la que Pertenece
+                                </label>
+                                <select
+                                    name="area"
+                                    id="area"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    type="text" 
+                                    placeholder="Área en la que Pertenece" 
+                                    required>
+                                    <option value="" hidden>Área en la que Pertenece</option>
+                                    {% for area in areas %}
+                                    <option value={{ area }}>{{ area }}</option>
+                                    {% endfor %}
+                                </select>
                         </div><br>
 
                         <div class="mb-4">
-                                <label for="puesto" class="block text-gray-700 text-sm font-bold mb-2">Puesto en la que
-                                        Pertenece</label>
-                                <input name="puesto" id="puesto"
-                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text" placeholder="Puesto en la que Pertenece" required>
+                                <label for="puesto" class="block text-gray-700 text-sm font-bold mb-2">
+                                    Puesto en la que Pertenece
+                                </label>
+                                <select
+                                    name="puesto"
+                                    id="puesto"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    type="text" 
+                                    placeholder="Puesto en la que Pertenece" 
+                                    required>
+                                    <option value="" hidden>Puesto en la que Pertenece</option>
+                                    {% for puesto in puestos %}
+                                    <option value={{ puesto }}>{{ puesto }}</option>
+                                    {% endfor %}
+                                </select>
                         </div><br>
 
                         <div class="mb-4">

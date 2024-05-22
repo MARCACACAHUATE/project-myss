@@ -18,7 +18,18 @@ class EnvioDocumentosView(View):
     template_name = "formulario_propuestas.html"
 
     def get(self, request, *args, **kwargs):
-        return render(request, self.template_name)
+        # obtener la data de las torres, areas y puestos
+        torres = ["Torre 1", "Torre 2", "Torre 3", "Torre 4"]
+        puestos = ["Puesto de tacos", "Puesto de garnachas", "Puesto de pulls"]
+        areas = ["Area prohibidos", "Area permitida", "Area horny af"]
+
+        context = {
+            "torres": torres,
+            "puestos": puestos,
+            "areas": areas
+        }
+
+        return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
         try:
