@@ -48,6 +48,18 @@ class RevisionDocumentosView(LoginRequiredMixin, View):
                     fecha_creacion__lte=end_date
                 )
 
+        elif filter == "pendientes":
+            if start_date is None or end_date is None:
+                propuestas = Propuesta.objects.filter(
+                    status="Pendiente"
+                )
+            else:
+                propuestas = Propuesta.objects.filter(
+                    status="Pendiente",
+                    fecha_creacion__gte=start_date,
+                    fecha_creacion__lte=end_date
+                )
+
         else:
             if start_date is None or end_date is None:
                 propuestas = Propuesta.objects.all()
