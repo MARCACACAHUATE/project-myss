@@ -4,8 +4,86 @@
 {% block main %}
 <div class="m-4">
     <h2 class="font-medium text-4xl text-center my-6">Propuestas Pendientes</h2>
-    <div class="flex justify-end my-5">
+    <div class="flex gap-4 justify-between my-5">
+
+        <div class="flex gap-2">
+            <p class="font-semibold">Filtrar por: </p>
+
+            <a href="/propuestas">
+                <button
+                    {% if filter != "todo" %}
+                    class="rounded-full h-7 bg-white px-4 text-gray-500 border-gray-500 border hover:bg-gray-100"
+                    {% else %}
+                    class="rounded-full h-7 px-4 text-gray-700 border-gray-700 border-2 bg-gray-200"
+                    disabled
+                    {% endif %}
+                    type="button">
+                    Todas las propuestas
+                </button>
+            </a>
+
+            <a href="/propuestas?filter=rechazadas">
+                <button
+                    {% if filter != "rechazadas" %}
+                    class="rounded-full h-7 bg-white px-4 text-gray-500 border-gray-500 border hover:bg-gray-100"
+                    {% else %}
+                    class="rounded-full h-7 px-4 text-gray-700 border-gray-700 border-2 bg-gray-200"
+                    disabled
+                    {% endif %}
+                    type="button">
+                    Rechazadas
+                </button>
+            </a>
+
+            <a href="/propuestas?filter=aceptadas">
+                <button
+                    {% if filter != "aceptadas" %}
+                    class="rounded-full h-7 bg-white px-4 text-gray-500 border-gray-500 border hover:bg-gray-100"
+                    {% else %}
+                    class="rounded-full h-7 px-4 text-gray-700 border-gray-700 border-2 bg-gray-200"
+                    disabled
+                    {% endif %}
+                    type="button">
+                    Aceptadas
+                </button>
+            </a>
+
+
+
+
+        </div>
+
+            <form class="flex gap-2" id="dateRangeForm" method="GET" action="/propuestas">
+                <label 
+                    class="font-semibold"
+                    for="start_date">
+                    Inicio: 
+                </label>
+                <input 
+                    class="rounded-full h-7"
+                    type="date" 
+                    id="start_date" 
+                    name="start_date" 
+                    value="{{ request.GET.start_date }}">
+
+                <label 
+                    for="end_date">
+                    Fin: 
+                </label>
+                <input 
+                    class="rounded-full h-7"
+                    type="date"
+                    id="end_date"
+                    name="end_date"
+                    value="{{ request.GET.end_date }}">
+
+                <input type="hidden" id="filter" name="filter" value="{{ request.GET.filter }}">
+            </form>
+
+        <!-- 
         <input class="rounded-full h-7" placeholder="Búsqueda" type="text" />
+        -->
+
     </div>
 
     <div class="overflow-auto max-h-[600px]">
@@ -82,6 +160,15 @@
         </table>
     </div>
 </div>
+<script>
+    document.getElementById('start_date').addEventListener('change', function() {
+        document.getElementById('dateRangeForm').submit();
+    });
+
+    document.getElementById('end_date').addEventListener('change', function() {
+        document.getElementById('dateRangeForm').submit();
+    });
+</script>
 <!--<object data="{% static 'Servicio.pdf' %}" type="application/pdf" width="500" height="678">
 
     <iframe src="{% static 'Servicio.pdf' %}" width="500" height="678">
