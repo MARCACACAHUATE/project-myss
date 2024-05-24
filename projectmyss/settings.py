@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # packages
     'tailwind',
-    'theme',
+    'layout',
     'django_browser_reload',
     # custom apps
     'propuestas',
@@ -155,7 +155,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "layout/static_src"),  # Agrega esta línea
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
@@ -165,7 +165,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # tailwind config
-TAILWIND_APP_NAME = 'theme'
+TAILWIND_APP_NAME = 'layout'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
