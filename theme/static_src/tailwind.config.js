@@ -40,8 +40,6 @@ module.exports = {
          * and make sure the pattern below matches your project structure.
          */
         // '../../**/*.py'
-        './templates/**/*.html',
-        './static_src/src/**/*.js',
     ],
     theme: {
         extend: {},

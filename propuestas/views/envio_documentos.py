@@ -23,7 +23,8 @@ class EnvioDocumentosView(View):
         # obtener la data de las torres, areas y puestos
         torres = ["TORRE CC", "TORRE KOI", "TORRE SUR"]
         puestos = ["Ejecutivo JR", "Ejecutivo SSR", "Ejecutivo SR"]
-        areas = ["Debito","TDC", "Preferencial", "Campañas", "Fraudes", "PYME"]
+        areas = ["Debito", "TDC", "Preferencial",
+                 "Campañas", "Fraudes", "PYME"]
 
         context = {
             "torres": torres,
