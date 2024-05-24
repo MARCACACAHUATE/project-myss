@@ -45,7 +45,7 @@ class RechazarPropuestaView(LoginRequiredMixin, View):
             propuesta.motivo = motivo
             mensaje = [motivo.Descripcion, motivo.Titulo,  "\nComentarios Adicionales:",
                             propuesta.descripcion_respuesta]
-            cuerpo = "\n\n".join(mensaje)
+            cuerpo = "\n".join(mensaje)
             send_mail(subject=settings.EMAIL_HOST_ASUNTO, message=cuerpo,
                       from_email=settings.EMAIL_HOST_USER, recipient_list=[propuesta.correo_personal,
                                                                            propuesta.correo_institucional])

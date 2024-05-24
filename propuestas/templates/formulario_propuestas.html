@@ -34,11 +34,11 @@
                         
 
                         <div class="mb-4">
-                                <label for="numero_empleado" class="uppercase block text-gray-700 font-bold mb-2">Número de
+                                <label for="numero_empleado" class="block text-gray-700 font-bold mb-2">Número de
                                         Empleado</label>
                                 <input name="numero_empleado" id="numero_empleado"
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text" placeholder="Número de Empleado" required>
+                                        type="text" placeholder="A(#Empleado)" required>
                         </div> <br>
 
                         <div class="mb-4">
@@ -46,7 +46,7 @@
                                         de Empleado</label>
                                 <input name="nombre_empleado" id="nombre_empleado"
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text" placeholder="Nombre de Empleado" required>
+                                        type="text" placeholder="Nombre Completo de Empleado" required>
                         </div><br>
 
                         <!--<div class="mb-4">
@@ -73,9 +73,9 @@
                                     id="torre"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     type="text" 
-                                    placeholder="Torre en la que Pertenece" 
+                                    placeholder="Seleccione la Torre en la que Pertenece" 
                                     required>
-                                    <option value="" hidden>Torre en la que Pertenece</option>
+                                    <option value="" hidden>Seleccione la Torre en la que Pertenece</option>
                                     {% for torre in torres %}
                                     <option value={{ torre }}>{{ torre }}</option>
                                     {% endfor %}
@@ -91,9 +91,9 @@
                                     id="area"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     type="text" 
-                                    placeholder="Área en la que Pertenece" 
+                                    placeholder="Seleccione el Área en la que Pertenece" 
                                     required>
-                                    <option value="" hidden>Área en la que Pertenece</option>
+                                    <option value="" hidden>Seleccione el Área en la que Pertenece</option>
                                     {% for area in areas %}
                                     <option value={{ area }}>{{ area }}</option>
                                     {% endfor %}
@@ -109,9 +109,9 @@
                                     id="puesto"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     type="text" 
-                                    placeholder="Puesto en la que Pertenece" 
+                                    placeholder="Seleccione el Puesto en la que Pertenece" 
                                     required>
-                                    <option value="" hidden>Puesto en la que Pertenece</option>
+                                    <option value="" hidden>Seleccione el Puesto en la que Pertenece</option>
                                     {% for puesto in puestos %}
                                     <option value={{ puesto }}>{{ puesto }}</option>
                                     {% endfor %}
@@ -124,7 +124,7 @@
                                         Directo</label>
                                 <input name="numero_empleado_jefe_directo" id="numero_empleado_jefe_directo"
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text" placeholder="Número de Empleado Jefe Directo" required>
+                                        type="text" placeholder="A(#Empleado)" required>
                         </div><br>
 
                         <div class="mb-4">
@@ -133,7 +133,7 @@
                                         Directo</label>
                                 <input name="nombre_empleado_jefe_directo" id="nombre_empleado_jefe_directo"
                                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                        type="text" placeholder="Nombre de Empleado Jefe Directo" required>
+                                        type="text" placeholder="Nombre Completo de Empleado Jefe Directo" required>
                         </div><br>
 
                         <div class="mb-4">
