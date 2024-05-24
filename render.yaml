@@ -1,10 +1,12 @@
 services:
   - type: web
-    name: django-app
+    name: my-django-app
     env: python
-    plan: free
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn projetmyss.wsgi:application"
-    envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: projetmyss.settings
+    plan: free  # Puedes cambiar esto a un plan de pago según tus necesidades
+    buildCommand: |
+      pip install -r requirements.txt
+      npm install
+      npm run build
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn projetmyss.wsgi:application
