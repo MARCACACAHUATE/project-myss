@@ -3,6 +3,9 @@
 # Instalar dependencias de Python
 pip install -r requirements.txt
 
+# Instalar django-tailwind explícitamente
+pip install django-tailwind
+
 # Instalar dependencias de Tailwind CSS
 python manage.py tailwind install
 

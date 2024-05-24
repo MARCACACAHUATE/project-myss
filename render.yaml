@@ -5,3 +5,6 @@ services:
     plan: free
     buildCommand: "./build.sh"
     startCommand: "gunicorn projetmyss.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: projetmyss.settings
