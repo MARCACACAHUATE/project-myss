@@ -1,6 +1,6 @@
+{% load cache %}
 {% load static %}
 {% load static tailwind_tags %}
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -119,7 +119,8 @@
   <!--contenido-->
   <div class="fixed right-0 top-20 h-full w-11/12 shadow-md">
     {% block main %}
-
+    {% cache 300 my_cache_key %}
+    {% endcache %}
     {% endblock%}
   </div>
 
