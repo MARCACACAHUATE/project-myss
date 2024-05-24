@@ -88,7 +88,7 @@
                 <p class="w-1/2">Motivo del Rechazo</p>
                 <p>{{ propuesta_data.motivo.Motivo }}</p>
             </div>
-            
+
 
             <div class="flex w-4/5 bg-gray-100">
                 <p class="w-1/2">Descripcion</p>
@@ -131,14 +131,9 @@
     </div>
 
     <div class="w-5/12 h-11/12 m-4 justify-center grid grid-cols-1 justify-items-center overflow-auto ">
-    <div class="w-full h-96 m-4 flex justify-center">
-        <object class="h-full w-11/12" data='{% static propuesta_data.archivo_propuesta %}' type="application/pdf" width="800"
-            height="578">
+        <div class="w-full h-96 m-4 flex justify-center">
 
-            <iframe src='{% static propuesta_data.archivo_propuesta %}' width="800" height="578">
-                <p>This browser does not support PDF!</p>
-            </iframe>
-        </object>
+            <embed src="{% static propuesta_data.archivo_propuesta %}" width="800" height="500" type="application/pdf">
+        </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
