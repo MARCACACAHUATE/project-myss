@@ -9,6 +9,9 @@ python manage.py tailwind install
 python manage.py tailwind build
 
 # Ejecutar migraciones
+python manage.py tailwind start
+
+# Ejecutar migraciones
 python manage.py migrate
 
 # Recoger archivos estáticos
