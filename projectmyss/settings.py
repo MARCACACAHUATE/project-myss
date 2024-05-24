@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # packages
-    'django_tailwind',
+    'tailwind',
     'theme',
     'django_browser_reload',
     # custom apps
