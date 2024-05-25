@@ -3,13 +3,10 @@ from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 # from django.contrib.auth.mixins import LoginRequiredMixin
 # from propuestas.models import Propuesta
-from django.views.decorators.cache import cache_page
-from django.utils.decorators import method_decorator
 
 # implementar LoginRequiredMixin
 
 
-@method_decorator(cache_page(60 * 15), name='dispatch')
 class LoginView(View):
     template_name = "login.html"
 
