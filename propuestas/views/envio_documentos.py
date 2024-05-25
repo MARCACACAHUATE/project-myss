@@ -22,15 +22,11 @@ class EnvioDocumentosView(View):
     def get(self, request, *args, **kwargs):
         # obtener la data de las torres, areas y puestos
 
+
         torres = ["TORRE CC", "TORRE KOI", "TORRE SUR"]
         puestos = ["Ejecutivo JR", "Ejecutivo SSR", "Ejecutivo SR"]
         areas = ["Debito", "TDC", "Preferencial", "Campañas", "Fraudes", "PYME"]
-        torres = ["Torre 1", "Torre 2", "Torre 3", "Torre 4"]
-        puestos = ["Puesto de tacos", "Puesto de garnachas", "Puesto de pulls"]
-        areas = ["Area prohibidos", "Area permitida", "Area horny af"]
-        torres = ["Torre 1", "Torre 2", "Torre 3", "Torre 4"]
-        puestos = ["Puesto de tacos", "Puesto de garnachas", "Puesto de pulls"]
-        areas = ["Area prohibidos", "Area permitida", "Area horny af"]
+        
         context = {
             "torres": torres,
             "puestos": puestos,

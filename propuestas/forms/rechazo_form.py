@@ -7,7 +7,8 @@ class RechazarPropuestaForm(forms.Form):
 
     opciones = [(motivo.Titulo, motivo.Descripcion)
                 for motivo in motivos_rechazo]
-
+    print(opciones)
+    
     descripcion = forms.CharField(
         widget=forms.Textarea(attrs={"rows": 5, }), required=False)
     motivo_rechazo = forms.ChoiceField(
