@@ -69,8 +69,14 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    'csp.middleware.CSPMiddleware',
 ]
 
+CSP_FRAME_ANCESTORS = ["'self'", 'https://modelado.onrender.com']
+CSP_DEFAULT_SRC = ["'self'"]
+
+
+X_FRAME_OPTIONS = 'ALLOWALL'
 
 STORAGES = {
     "staticfiles": {
